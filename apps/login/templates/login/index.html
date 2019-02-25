@@ -1,0 +1,106 @@
+{% extends 'login/base.html' %}
+
+{% block content %}
+<div class="form_container container">
+        <div class="form_content">
+            <div class="reduced_opacity_background">
+                
+                    <form class="registration_form" action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-title">
+                                <P>JOIN, It's free</P>
+                            </div>
+                            <div class="form-group row">
+                                <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="first_name" placeholder="" value="{{first_name}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-3 col-form-label">Email</label>                                
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="email" placeholder="" value="{{email}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="dob" class="col-sm-3 col-form-label">Date of Birteh</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="dob" placeholder="" value="{{dob}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="confirmpw" class="col-sm-3 col-form-label">Confirm Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="confirmpw" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-3 col-form-label">I'm</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Man</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Women</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-3 col-form-label">Seeking for</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Man</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Women</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-3 col-form-label">Age Between</label>
+                                <div class="col-sm-9">
+                                    <select name="" id="" class="form-control" >
+                                        <option value="">-</option>
+                                        <option value="">30-45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="zipcode" class="col-sm-3 col-form-label">Zip Code</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="zipcode" placeholder="">
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Register">
+                            <br>
+                            <a href=""> Already have an account? Login </a>
+                        </form>                      
+            
+            </div>
+        </div>
+    </div>
+    
+    <div class="written_content">
+        <div class="container">
+            <p>TIRED OF BEING ALONE?</p>
+            <div class="tired_of">
+                01 JOIN AND FIND YOUR LOVE
+            </div>
+            <div class="tired_of">
+                02 ADD INFORMATION ABOUT YOURSELF
+            </div>
+            <div class="tired_of">
+                03 ANALYZE THE LIST OF PEOPLE
+            </div>
+            <div class="tired_of">
+                04 GET IN TOUCH AND BE HAPPY
+            </div>
+        </div>
+    </div>
+{% endblock content %}

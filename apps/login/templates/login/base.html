@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Look-4-Me</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--JQuery UI-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Begin - javascript and CSS required for datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- End - javascript and CSS required for datepicker -->
+
+
+    {% load static %}
+    <style>
+        *{
+            margin: 0px;
+            /* outline: 1px solid red;             */
+        }
+        body { 
+            background: url("/static/login/images/bg_image.jpg") no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        div#logo{
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+        .header { 
+            position: absolute; 
+            height: 63px; 
+            width: 100%; 
+            background-color: rgba(255, 76, 93, .5);
+            /* rgb(255, 76, 93); */
+            top: 0px;
+        } 
+        .form_container{
+            padding-top: 180px;
+            margin-bottom: 30px;
+        }
+        .written_content{
+            display: inline-block;
+        }
+        .reduced_opacity_background{
+            background: rgba(200, 54, 54, 0.5);            
+        }
+        .form_content{
+            width: 50%;
+        }
+        form{
+            padding: 10px 30px;
+            color: white;
+        }
+        .form-title{
+            text-align: center;
+            font-size: 50px;
+        }
+        .tired_of{
+            display: inline-block;
+            width: 24%;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "header">
+        <div class="container">
+            <div id="logo">
+                <img src="/static/login/images/logo_bg.png" alt="Logo_Bg">
+            </div>
+            <div container>
+                <form action="">
+                    <div class="login_form">
+                        <label for=""></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+        
+    {% endblock content %}
+</body>
+</html>
