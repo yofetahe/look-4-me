@@ -1,0 +1,144 @@
+{% extends 'login/base_2.html' %} {% load staticfiles%} {% block head %}
+<style type="text/css">
+    .show_matching {
+        height: 200px;
+        width: 200px;
+        padding: 0px;
+        border: 2px solid black;
+        display: inline-block;
+        margin: 13px;
+    }
+    
+    .little_bar {
+        width: 100%;
+        height: 40px;
+        margin-top: 0px;
+        background-color: rgba(255, 0, 0, 0.2)
+    }
+    
+    .little_bar img {
+        width: 35px;
+        height: 35px;
+        margin: 2px 7px 0px 7px;
+    }
+    
+    .navbar-nav {
+        float: right
+    }
+    
+    .show_info {
+        margin: 133px 0px 0px 0px;
+    }
+    
+    .search_form {
+        border-bottom: 1px solid black;
+        display: inline-block;
+        color: black;
+        margin: 0px;
+        padding: 0px;
+        font-size: 13px;
+        text-align: left;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('#search_form').submit(function() {
+            $.ajax({
+                url: '/login/search_process',
+                method: 'post',
+                data: $(this).serialize(),
+                successcopy: function(serverResponse) {
+                    $('#show_matching').html(serverResponse)
+                }
+            })
+            return false;
+        })
+    })
+</script>
+{%endblock%} {% block content %}
+<form id="search_form" class="search_form col-sm-11" action="" method="POST">
+    {%csrf_token%}
+    <div class='col-sm-11 col-xl-4  d-inline-block'>
+        <div class='row'>
+            <p class="col-sm-5">Seeking for</p>
+            <div class='col-sm-3'> <input type="radio" name="sexual_orientation" value="man">Man</div>
+            <div class='col-sm-4'><input type="radio" name="sexual_orientation" value="woman">Woman</div>
+        </div>
+
+
+        <div class='row mt-sm-3'>
+            <p class="col-sm-5 ">Age between</p>
+            <select class='col-sm-5 ml-auto' name='age'>
+                    <option value="0">18-25</option>
+                    <option value="1">26-28</option>
+                    <option value="2">29-32</option>
+                    <option value="3">33-40</option>
+                    <option value="4">40-50</option>
+                    <option value="5">50+</option>
+            </select>
+        </div>
+
+        <div class='row mt-sm-3'>
+            <p class="col-sm-5">Ethnic Group</p>
+            <select class='col-sm-5 ml-auto' name='ethnic'>
+                        <option value="Amerindians">Amerindians</option>
+                        <option value="Africans">Africans</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Indians">Indians</option>
+                        <option value="Europeans">Europeans</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class='col-sm-11 col-xl-3 d-inline-block align-bottom'>
+        <div class='row mt-sm-3'>
+            <p class="col-sm-7 mr-auto ">Marital Status</p>
+            <select class='col-sm-5 ml-auto' name='marital'>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="separated">Separated</option>
+                        <option value="divorced">Divorced</option>
+                </select>
+        </div>
+
+        <div class='row mt-sm-3'>
+            <p class="col-sm-5">Zip code</p>
+            <input class="col-sm-5 ml-auto" type="text" name='zip'>
+
+        </div>
+
+        <div class='row mt-sm-3'>
+            <p class="col-sm-5">Religion</p>
+            <select class='col-sm-5 ml-auto' name='religion'>
+                            <option value="Christianity ">Christianity </option>
+                            <option value="Islam">Islam </option>
+                            <option value="Catholicism">Catholicism</option>
+                            <option value="Hinduism">Hinduism</option>
+                            <option value="Agnosticism">Agnosticism</option>
+                </select>
+        </div>
+    </div>
+
+
+
+    <div class='col-sm-11 col-xl-4 d-inline-block align-top'>
+        <div class='row mt-sm-3'>
+            <p class="col-sm-6">Education level</p>
+            <select class='col-sm-5 ml-auto' name='edu_level'>
+                            <option value="bachelor">Bachelor</option>
+                            <option value="master">Master</option>
+                            <option value="doctor">doctor</option>
+                    </select>
+        </div>
+    </div>
+    <div class='mb-sm-2'>
+        <input id="search_form_btn" class="offset-sm-9 offset-xl-10 mt-sm-2 col-sm-2 col-md-2 col-xl-1" type="submit" value="search">
+    </div>
+</form>
+
+<div id="show_matching">
+
+</div>
+
+{% endblock content %}
