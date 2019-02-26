@@ -29,7 +29,8 @@ def upload(request):
     if request.method == 'POST':
         uploaded_file = request.FILES['myfile']
         fs = FileSystemStorage()
-        fs.save(uploaded_file.name, uploaded_file.url)
+        file_name = fs.save(uploaded_file.name, uploaded_file)
         print(uploaded_file.name)
         print(uploaded_file.size)
+        print(fs.url(file_name))
     return render(request, 'login_form.html')

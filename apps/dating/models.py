@@ -3,8 +3,8 @@ from apps.login.models import User
 from apps.dating_admin.models import Questionnaire
 
 class Picture(models.Model):
-    pictures = models.ImageField(upload_to='dating/photos')
-    pictures_url = models.CharField(max_length=255)
+    pictures = models.ImageField(upload_to='dating/photos', null=True)
+    pictures_url = models.CharField(max_length=255, null=True)
     is_profile_pic = models.CharField(max_length=45)
     user = models.ForeignKey(User, related_name="pictures")
     created_at = models.DateTimeField(auto_now_add=True)

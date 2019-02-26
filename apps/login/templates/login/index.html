@@ -97,6 +97,7 @@
                     <input type="submit" class="btn btn-primary" value="SIGN UP">                                              
                 </form>
 
+                
                 <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="file" name="myfile">
@@ -106,6 +107,7 @@
                     <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
                 {% endif %}
                 
+
                 <form id="login_form" action="{% url 'login' %}" style="display:none">
                     {% csrf_token %}
                     <div class="form-group row">
