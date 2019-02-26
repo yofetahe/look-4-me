@@ -1,3 +1,19 @@
 from django.db import models
 
-# Create your models here.
+class Category(models.Model):
+    cat_title = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Questionnaire(models.Model):
+    question_content = models.TextField()
+    question_type = models.CharField(max_length=15)  #-- 1, 2, 11, 22
+    categoty = models.ForeignKey(Category, related_name='questions')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Choice(models.Model):
+    choice_content = models.CharField(max_length=255)
+    questions = models.ForeignKey(Questionnaire, related_name='choices')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

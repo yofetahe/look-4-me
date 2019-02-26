@@ -1,61 +1,22 @@
-{% extends 'login/base_2.html' %} {% load staticfiles%} {% block head %}
-<style type="text/css">
-    .show_matching {
-        height: 200px;
-        width: 200px;
-        padding: 0px;
-        border: 2px solid black;
-        display: inline-block;
-        margin: 13px;
-    }
-    
-    .little_bar {
-        width: 100%;
-        height: 40px;
-        margin-top: 0px;
-        background-color: rgba(255, 0, 0, 0.2)
-    }
-    
-    .little_bar img {
-        width: 35px;
-        height: 35px;
-        margin: 2px 7px 0px 7px;
-    }
-    
-    .navbar-nav {
-        float: right
-    }
-    
-    .show_info {
-        margin: 133px 0px 0px 0px;
-    }
-    
-    .search_form {
-        border-bottom: 1px solid black;
-        display: inline-block;
-        color: black;
-        margin: 0px;
-        padding: 0px;
-        font-size: 13px;
-        text-align: left;
-    }
-</style>
+{% extends 'dating/base_1.html' %} 
+
+{% load staticfiles%} 
+{% block base_1_content %}
 <script>
-    $(document).ready(function() {
-        $('#search_form').submit(function() {
-            $.ajax({
-                url: '/login/search_process',
-                method: 'post',
-                data: $(this).serialize(),
-                successcopy: function(serverResponse) {
-                    $('#show_matching').html(serverResponse)
-                }
+        $(document).ready(function() {
+            $('#search_form').submit(function() {
+                $.ajax({
+                    url: '/login/search_process',
+                    method: 'post',
+                    data: $(this).serialize(),
+                    successcopy: function(serverResponse) {
+                        $('#show_matching').html(serverResponse)
+                    }
+                })
+                return false;
             })
-            return false;
         })
-    })
-</script>
-{%endblock%} {% block content %}
+    </script>
 <form id="search_form" class="search_form col-sm-11" action="" method="POST">
     {%csrf_token%}
     <div class='col-sm-11 col-xl-4  d-inline-block'>
@@ -141,4 +102,4 @@
 
 </div>
 
-{% endblock content %}
+{% endblock base_1_content %}

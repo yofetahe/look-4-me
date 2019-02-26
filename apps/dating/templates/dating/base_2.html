@@ -91,6 +91,8 @@
             height: 100px;
         }
         
+
+        
         .navbar {
             font-family: cursive;
             font-size: 15px;
@@ -111,6 +113,8 @@
             width: 100%;
         }
         
+
+
         .side-bar {
             padding: 2%
         }
@@ -123,70 +127,96 @@
             text-align: center;
             padding: 2% 0px 0px 0px;
         }
-    </style>
-    {% block head %} {% endblock %}
 
+
+
+        .show_matching {
+            height: 200px;
+            width: 200px;
+            padding: 0px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 13px;
+        }
+        
+        .little_bar {
+            width: 100%;
+            height: 40px;
+            margin-top: 0px;
+            background-color: rgba(255, 0, 0, 0.2)
+        }
+        
+        .little_bar img {
+            width: 35px;
+            height: 35px;
+            margin: 2px 7px 0px 7px;
+        }
+        
+        .show_info {
+            margin: 133px 0px 0px 0px;
+        }
+
+        .sm-logo{
+            background-image: url('/static/login/images/logo_bg.png');
+            background-position:center;
+            background-repeat:no-repeat;
+            background-size: contain;
+            height:100px;
+            width:150px;
+            text-align: center;
+            color: white;
+            font-size: 25px;
+            display: inline-block;
+        }
+    </style>    
 </head>
 
 <body>
     <div class="header">
-        <div id="logo">
-            <img src="/static/login/images/logo_bg.png" alt="Logo_Bg">
+        <div class="container">            
+            <nav class=" navbar navbar-expand-md navbar-light">
+                <div class="navbar-brand sm-logo">
+                    Look4Me
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#"><u>My Matches</u></a>
+                        </li>
+
+                        <li class="nav-item border-left">
+                            <a class="nav-link" href="#"><u>Search</u></a>
+                        </li>
+
+                        <li class="nav-item border-left">
+                            <a class="nav-link" href="#"><u>Messages & Likes</u></a>
+                        </li>
+
+                        <li class="nav-item border-left">
+                            <a class="nav-link" href="{% url 'get_profile_index' %}"><u>My profile</u></a>
+                        </li>
+
+                        <li class="nav-item border-left">
+                            <a class="nav-link" href="#"><u>Log out</u></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-        <nav class=" navbar navbar-expand-md navbar-light">
-
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
-                    </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#"><u>My Matches</u></a>
-                    </li>
-
-                    <li class="nav-item border-left">
-                        <a class="nav-link" href="#"><u>Search</u></a>
-                    </li>
-
-                    <li class="nav-item border-left">
-                        <a class="nav-link" href="#"><u>Messages & Likes</u></a>
-                    </li>
-
-                    <li class="nav-item border-left">
-                        <a class="nav-link" href="#"><u>My profile</u></a>
-                    </li>
-
-                    <li class="nav-item border-left">
-                        <a class="nav-link" href="#"><u>Log out</u></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
     </div>
 
     <div class='info_display'>
-        <div class='main_info float-md-left float-sm-none d-inline-block col-sm-11 col-md-9'>
-            {% block content %} {% endblock content %}
+        <div class='container'>
+            {% block content %} 
+            
+            {% endblock content %}
         </div>
-        <div class='side-bar d-inline-block col-sm-11 col-md-3'>
-            <!-- login user's personal information -->
-
-            <!-- persons who may interest in login user -->
-            <div class='border mt-sm-3 text-center'>
-                <!-- NEED FOR LOOP HERE! -->
-                <p>This are searching!</p>
-                <a href=""><img class="pic_search col-sm-9" src="{% static 'login/images/bg_image.jpg' %}" /></a>
-                <p>{{x.full_name}}({{x.age}})</p>
-
-
-            </div>
-
-
-        </div>
-
     </div>
 </body>
 

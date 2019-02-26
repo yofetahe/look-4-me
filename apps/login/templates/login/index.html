@@ -1,8 +1,8 @@
 {% extends 'login/base.html' %}
 
 {% block content %}
-    
-        <div class="form_content">
+    <div class="row">
+        <div class="col-md-7 mb-4">
 
             <div id="login_reg_form" class="reduced_opacity_background">
 
@@ -47,50 +47,50 @@
                         </div>
                     </div>
 
-                    <div class="right">
-                        <div class="form-group row">
-                            <label for="" class="col-sm-5 col-form-label">I'm</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Man</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">Women</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="left">
-                        <div class="form-group row">
-                            <label for="" class="col-sm-6 col-form-label">Age Between</label>
-                            <div class="col-sm-6">
-                                <select name="" id="" class="form-control" >
-                                    <option value="">-</option>
-                                    <option value="">30-45</option>
-                                </select>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-5 col-form-label">I'm</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Man</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Women</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="right">
-                        <div class="form-group row">
-                            <label for="" class="col-sm-5 col-form-label">Seeking for</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Man</label>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-5 col-form-label">Seeking for</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Man</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Women</label>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">Women</label>
+                        </div> 
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-6 col-form-label">Age Between</label>
+                                <div class="col-sm-6">
+                                    <select name="" id="" class="form-control" >
+                                        <option value="">-</option>
+                                        <option value="">30-45</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                            
-                    <div class="left">
-                        <div class="form-group row">
-                            <label for="zipcode" class="col-sm-4 col-form-label">Zip Code</label>
-                            <div class="col-sm-8">
-                                    <input type="password" class="form-control" name="zipcode" placeholder="">
+                        </div>                         
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group row">
+                                <label for="zipcode" class="col-sm-4 col-form-label">Zip Code</label>
+                                <div class="col-sm-8">
+                                        <input type="password" class="form-control" name="zipcode" placeholder="">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <div class="written_content">
+        <div class="col-md-5 mb-4">
             <div class="container">
                 <p>TIRED OF BEING ALONE?</p>
                 <h1 class="content_title">Don't Stay Alon, Find your perfect match with us!</h1>                
@@ -137,7 +137,5 @@
             </div>
         </div>
 
-    
-    
-    
+    </div>
 {% endblock content %}

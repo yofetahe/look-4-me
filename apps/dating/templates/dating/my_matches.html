@@ -1,0 +1,21 @@
+{% extends 'dating/base_1.html' %} 
+ 
+{% block base_1_content %}
+{% load static %}
+<!--  -->
+
+        <div class='show_matching col-sm-11 col-md-6 col-lg-3 ' style=" background: url('/static/login/images/bg_image.jpg');background-position: center;background-size: cover; ">
+            <!-- <img sre="{% static 'login/images/background-image.jpg' %}"> -->
+            <p class="show_info">{{x.full_name}}({{x.age}})</p>
+            <div class="little_bar">
+                <a href=""><img src="{% static 'login/images/cross_icon.png' %}" /></a>
+                <a href=""><img src="{% static 'login/images/heart.png' %}" /></a>
+                <a href=""><img src="{% static 'login/images/chat_icon.png' %}" /></a>
+            </div>
+        </div>
+
+        <div>
+            <button class='d-inline'>skip all</button>
+        </div>
+   
+{% endblock base_1_content %}

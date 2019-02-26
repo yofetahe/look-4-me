@@ -1,69 +1,7 @@
-{% extends 'login/base_2.html' %} {% load staticfiles%} {% block head %}
-<style type="text/css">
-    .show_matching {
-        height: 200px;
-        width: 200px;
-        padding: 0px;
-        border: 2px solid black;
-        display: inline-block;
-        margin: 13px;
-    }
-    
-    .little_bar {
-        width: 100%;
-        height: 40px;
-        margin-top: 0px;
-        background-color: rgba(255, 0, 0, 0.2)
-    }
-    
-    .little_bar img {
-        width: 35px;
-        height: 35px;
-        margin: 2px 7px 0px 7px;
-    }
-    
-    .navbar-nav {
-        float: right
-    }
-    
-    .show_info {
-        margin: 133px 0px 0px 0px;
-    }
-    
-    .search_form {
-        border-bottom: 1px solid black;
-        display: inline-block;
-        color: black;
-        margin: 0px;
-        padding: 0px;
-        font-size: 13px;
-        text-align: left;
-    }
-    
-    .self_info {
-        text-align: left;
-        padding: 0px
-    }
-    
-    .title {
-        font-size: 20px;
-        font-weight: 600
-    }
-    
-    .content {
-        font-size: 12px;
-        font-family: sans-serif;
-    }
-    
-    .upload_pic {
-        height: 100px;
-        width: 100px;
-        border: 2px solid black;
-        display: inline-block;
-        margin-top: 4px
-    }
-</style>
-{%endblock%} {% block content %}
+{% extends 'dating/base_1.html' %} 
+{% load staticfiles%} 
+
+{% block base_1_content %}
 <div class='col-sm-12 mb-sm-2 d-inline-block'>
     <div class='show_matching col-sm-11 col-lg-3 float-sm-none float-lg-left' style=" background: url('/static/login/images/bg_image.jpg');background-position: center;background-size: cover; ">
         <!-- NEED FOR LOOP1 -->
@@ -116,4 +54,4 @@
         </form>
     </div>
 </div>
-{% endblock content %}
+{% endblock base_1_content %}

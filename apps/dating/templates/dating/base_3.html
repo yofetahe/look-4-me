@@ -1,0 +1,29 @@
+{% extends 'dating/base.html' %}
+{% load staticfiles%}
+{% block base_content %}
+
+    <div class='info_display'>
+        <div class="row">
+            <div class='col-md-8'>
+                {% block base_3_content %} 
+                
+                {% endblock base_3_content %}
+            </div>
+
+            <div class='col-md-3'>
+                <!-- login user's personal information -->
+
+                <!-- persons who may interest in login user -->
+                <div class='border mt-sm-3 text-center'>
+                    <!-- NEED FOR LOOP HERE! -->
+                    <p>This are searching!</p>
+                    <a href=""><img class="pic_search col-sm-9" src="{% static 'login/images/bg_image.jpg' %}" /></a>
+                    <p>{{x.full_name}}({{x.age}})</p>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock base_content %}
