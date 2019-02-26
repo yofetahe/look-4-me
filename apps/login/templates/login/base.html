@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
     <!--JQuery UI-->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -17,62 +19,14 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- End - javascript and CSS required for datepicker -->
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     {% load static %}
-    <style>
-        *{
-            margin: 0px;
-            /* outline: 1px solid red;             */
-        }
-        body { 
-            background: url("/static/login/images/bg_image.jpg") no-repeat center center fixed; 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-        div#logo{
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-        }
-        .header { 
-            position: absolute; 
-            height: 63px; 
-            width: 100%; 
-            background-color: rgba(255, 76, 93, .5);
-            /* rgb(255, 76, 93); */
-            top: 0px;
-        } 
-        .form_container{
-            padding-top: 180px;
-            margin-bottom: 30px;
-        }
-        .written_content{
-            display: inline-block;
-        }
-        .reduced_opacity_background{
-            background: rgba(200, 54, 54, 0.5);            
-        }
-        .form_content{
-            width: 50%;
-        }
-        form{
-            padding: 10px 30px;
-            color: white;
-        }
-        .form-title{
-            text-align: center;
-            font-size: 50px;
-        }
-        .tired_of{
-            display: inline-block;
-            width: 24%;
-            height: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'login/css/main.css' %}">
+    <script src="{% static 'login/js/main.js' %}"></script>
+    
 </head>
-<body>
+<body id="login_body">
     <div class = "header">
         <div class="container">
             <div id="logo">
@@ -87,8 +41,11 @@
             </div>
         </div>
     </div>
-    {% block content %}
-        
-    {% endblock content %}
+    <div class="form_container container">
+        {% block content %}
+            
+        {% endblock content %}
+    </div>
+
 </body>
 </html>

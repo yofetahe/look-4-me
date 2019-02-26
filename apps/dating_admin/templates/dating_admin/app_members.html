@@ -1,0 +1,49 @@
+
+    <table id="memberList" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Seeking For</th>
+                <th>Age Between</th>
+                <th>Zip Code</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Text User</td>
+                <td>text@gmail.com</td>
+                <td>1991-11-19</td>
+                <td>Male</td>
+                <td>Female</td>
+                <td>35-45</td>
+                <td>98026</td>
+                <td>Active</td>
+                <td> <a href="">block</a> &nbsp; | &nbsp; <a href="">Delete</a> </td>
+            </tr>
+            <tr>
+                <td>Text User</td>
+                <td>text@gmail.com</td>
+                <td>1991-11-19</td>
+                <td>Male</td>
+                <td>Female</td>
+                <td>35-45</td>
+                <td>98026</td>
+                <td>Active</td>
+                <td> <a href="">block</a> &nbsp; | &nbsp; <a href="">Delete</a> </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>        
+        $(document).ready(function(){
+            $('#memberList').DataTable({
+                "pagingType" : "first_last_numbers"
+            });
+        });
+    </script>

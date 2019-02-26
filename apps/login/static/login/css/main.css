@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    /* outline: 1px solid red;             */
+}
+body#login_body { 
+    background: url("/static/login/images/bg_image.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+div#logo{
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.header { 
+    position: absolute; 
+    height: 63px; 
+    width: 100%; 
+    background-color: rgba(255, 76, 93, .5);
+    /* rgb(255, 76, 93); */
+    top: 0px;
+} 
+.form_container{
+    padding-top: 150px;
+    margin-bottom: 30px;
+}
+.written_content{
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+    color: white;
+}
+.reduced_opacity_background{
+    background: rgba(200, 54, 54, 0.5);            
+}
+.form_content{
+    width: 54%;
+    display: inline-block;
+}
+form#signup_form{
+    padding: 10px 30px;
+    color: white;
+}
+.form-title{
+    text-align: center;
+    font-size: 50px;
+}
+.tired_of{
+    height: 50px;
+    background-color: white;
+    vertical-align: top;
+    background: rgba(200, 54, 54, 0.5); 
+    margin-bottom: 15px;
+}
+    .tired_of span{
+        font-size: 35px;
+        position: absolute;
+        font-weight: bolder;
+        color: rgba(255, 255, 255, 0.3); 
+    }
+    .tired_of p{
+        padding-left: 40px;
+        padding-top: 15px;
+    }
+.content_title{
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+}
+
+.right{
+    display: inline-block;
+    width: 49%;
+}
+.left{
+    display: inline-block;
+    width: 49%;
+}
+.login_link{
+    padding-top: 20px;
+    color: white;
+    text-decoration: none;
+    padding-left: 20px;            
+}
+
+div.my-tabs{
+    border-bottom: 1px white solid;
+    margin: 0px;
+}
+div.my-tabs a{
+    display: inline-block;
+    width: auto;    
+    text-align: center;
+    padding: 10px 5px;
+    color: white;
+    cursor: pointer;
+}
+div.my-tabs a.active{
+    background: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    color:rgb(255, 255, 255)
+}
+
+.questions_list{
+    min-height: 450px;
+}

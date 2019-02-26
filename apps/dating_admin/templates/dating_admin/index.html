@@ -1,0 +1,43 @@
+{% extends 'dating_admin/base.html' %}
+    
+{% block content %}
+<script>
+$(document).ready(function(){
+   
+    $('#question_and_answers').click(function() {
+        $.ajax({
+            url:  '../questions_answers',
+            type:  'get',
+            dataType:  'html',
+            success:  function (data) {
+                $('#content').html(data)
+            }
+        });
+    });
+
+    $('#app_members').click(function() {                
+        $.ajax({
+            url:  '../app_members',
+            type:  'get',
+            dataType:  'html',
+            success:  function (data) {
+                $('#content').html(data)
+            }
+        });
+    });
+})
+
+</script>
+<div>
+    <h3 class="page_title"> Admin </h3>
+    <div class="header_link_container">
+        <a href="#" id="app_members">App Members</a> &nbsp; | &nbsp; 
+        <a href="#" id="question_and_answers">Questions and Answers</a>
+    </div>
+</div>
+<hr>
+<div id="content">
+    {% include 'dating_admin/app_members.html' %}
+</div>
+
+{% endblock content %}

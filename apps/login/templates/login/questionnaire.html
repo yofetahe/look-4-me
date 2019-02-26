@@ -1,0 +1,20 @@
+{% extends 'login/base.html' %}
+
+{% block content %}
+<h2 class="content_title">Let us know who you are, what intrest you adn what you are looking for?</h2>
+<div id="login_reg_form" class="reduced_opacity_background questions_list">
+    <div class="my-tabs">
+        <a id="signup" class="active" onclick="view_signup_form()"> Introduction </a>
+        <a id="login" onclick="view_login_form()"> LOGIN </a>
+    </div>
+    <div>
+        <form action="">
+            <div class="form-group">
+                <label for="short_summery">Short Summery About Who You Are</label>
+                <textarea name="summery" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Continue"
+        </form>
+    </div>
+</div>
+{% endblock content %}

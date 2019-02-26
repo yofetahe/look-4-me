@@ -1,0 +1,51 @@
+{% extends 'dating/base.html' %}
+
+{% block content %}
+    <script>
+        $(document).ready(function(){
+            
+            $('#profile_information').click(function() {
+                $.ajax({
+                    url:  '../get_profile',
+                    type:  'get',
+                    dataType:  'html',
+                    success:  function (data) {
+                        $('#profile_body').html(data)
+                    }
+                });
+            });
+
+            $('#questions_answers').click(function() { 
+                $.ajax({
+                    url:  '../get_questions_answers',
+                    type:  'get',
+                    dataType:  'html',
+                    success:  function (data) {
+                        $('#profile_body').html(data)
+                    }
+                });
+            });
+
+            $('#activity_statistics').click(function() { 
+                $.ajax({
+                    url:  '../get_statistics',
+                    type:  'get',
+                    dataType:  'html',
+                    success:  function (data) {
+                        $('#profile_body').html(data)
+                    }
+                });
+            });
+        })
+    </script>
+
+    <div class="main_links">
+        <a href="#" id="profile_information">Profile Information</a> &nbsp; | &nbsp; 
+        <a href="#" id="questions_answers">Questions and Answers</a>  &nbsp; | &nbsp; 
+        <a href="#" id="activity_statistics">Your Activity Statistics</a>
+    </div>
+    <hr>
+    <div id="profile_body">
+        {% include 'dating/my_profile.html' %}
+    </div>
+{% endblock content %}
