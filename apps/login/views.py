@@ -33,4 +33,4 @@ def upload(request):
         print(uploaded_file.name)
         print(uploaded_file.size)
         print(fs.url(file_name))
-    return render(request, 'login_form.html')
+    return render(request, 'login/index.html', {"uploaded_file_url": fs.url(file_name)})
