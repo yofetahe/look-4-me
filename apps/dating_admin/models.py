@@ -8,7 +8,7 @@ class Category(models.Model):
 class Questionnaire(models.Model):
     question_content = models.TextField()
     question_type = models.CharField(max_length=15)  #-- 1, 2, 11, 22
-    categoty = models.ForeignKey(Category, related_name='questions')
+    category = models.ForeignKey(Category, related_name='questions')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

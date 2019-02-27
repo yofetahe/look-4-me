@@ -9,6 +9,9 @@ urlpatterns = [
     url(r'^getQuestionnaireForm/$', views.getQuestionnaireForm, name="getQuestionnaireForm"),
     url(r'^login/$', views.login, name="login"),
     url(r'^upload/$', views.upload, name="upload"),
+    url(r'^get_signup_form/$', views.get_signup_form, name="get_signup_form"),
+    url(r'^get_login_form/$', views.get_login_form, name="get_login_form"),
+    url(r'^success/$', views.success, name="success"),
 ]
 
 if settings.DEBUG:

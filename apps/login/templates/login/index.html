@@ -1,119 +1,50 @@
 {% extends 'login/base.html' %}
 
 {% block content %}
+    <script>
+        $(document).ready(function(){
+           
+            $('#signup_tab').click(function() {
+                $.ajax({
+                    url: '{% url "get_signup_form" %}',
+                    type: 'get',
+                    dataType: 'html',
+                    success:  function (data) {
+                        document.getElementById('signup_tab').className = 'active'
+                        document.getElementById('login_tab').className = ''
+                        $('#form_display').html(data)
+                    }
+                });
+            });
+        
+            $('#login_tab').click(function() {
+                $.ajax({
+                    url: '{% url "get_login_form" %}',
+                    type: 'get',
+                    dataType: 'html',
+                    success:  function (data) {
+                        document.getElementById('signup_tab').className = ''
+                        document.getElementById('login_tab').className = 'active'
+                        $('#form_display').html(data)
+                    }
+                });
+            });
+        })        
+    </script>
+
     <div class="row">
         <div class="col-md-7 mb-4">
 
             <div id="login_reg_form" class="reduced_opacity_background">
 
                 <div class="my-tabs">
-                    <a id="signup" class="active" onclick="view_signup_form()"> SIGN UP </a>
-                    <a id="login" onclick="view_login_form()"> LOGIN </a>
+                    <a id="signup_tab" href="#" class="active" > SIGN UP </a>
+                    <a id="login_tab" href="#"> LOGIN </a>
                 </div>
                 
-                <form id="signup_form" class="registration_form" action="{% url 'register' %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-title">
-                        <P>JOIN, It's free</P>
-                    </div>
-                    <div class="form-group row">
-                        <label for="first_name" class="col-sm-4 col-form-label">First Name</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="first_name" placeholder="" value="{{first_name}}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-4 col-form-label">Email</label>                                
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="email" placeholder="" value="{{email}}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="dob" class="col-sm-4 col-form-label">Date of Birteh</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="dob" placeholder="" value="{{dob}}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="password" class="col-sm-4 col-form-label">Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="confirmpw" class="col-sm-4 col-form-label">Confirm Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" name="confirmpw" placeholder="Confirm Password">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-group row">
-                                <label for="" class="col-sm-5 col-form-label">I'm</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Man</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Women</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-group row">
-                                <label for="" class="col-sm-5 col-form-label">Seeking for</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Man</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Women</label>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="col-md-6 mb-4">
-                            <div class="form-group row">
-                                <label for="" class="col-sm-6 col-form-label">Age Between</label>
-                                <div class="col-sm-6">
-                                    <select name="" id="" class="form-control" >
-                                        <option value="">-</option>
-                                        <option value="">30-45</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>                         
-                        <div class="col-md-6 mb-4">
-                            <div class="form-group row">
-                                <label for="zipcode" class="col-sm-4 col-form-label">Zip Code</label>
-                                <div class="col-sm-8">
-                                        <input type="password" class="form-control" name="zipcode" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="SIGN UP">                                              
-                </form>
-
-                <form id="login_form" action="{% url 'login' %}" style="display:none">
-                    {% csrf_token %}
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-4 col-form-label">Email</label>                                
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="email" placeholder="" value="{{email}}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="password" class="col-sm-4 col-form-label">Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-                        </div>
-                    </div>                    
-                    <input type="submit" class="btn btn-primary" value="LOG IN">                    
-                </form>
-            
+                <div id="form_display">
+                    {% include 'login/signup_form.html' %}
+                </div>            
             </div>
         </div>
 

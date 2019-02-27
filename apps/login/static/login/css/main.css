@@ -106,3 +106,8 @@ div.my-tabs a.active{
 .questions_list{
     min-height: 450px;
 }
+
+.registration_form{
+    padding: 15px;
+    color: white;
+}

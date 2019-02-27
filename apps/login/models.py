@@ -1,4 +1,42 @@
 from django.db import models
+import re
+
+class UserManager(models.Manager):
+
+    def basic_validator(self, postData):
+
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
+        NAME_REGEX = re.compile(r'^[a-zA-Z ]')
+        PASSWORD_1_REGEX = re.compile(r'^[A-Z]')
+        PASSWORD_2_REGEX = re.compile(r'^[0-9]')
+
+        errors = {}
+        
+        if len(postData['first_name']) < 2:
+            errors['first_name'] = "First name must be filled or should be longer than 2 character"
+        else:
+            if not NAME_REGEX.match(postData['first_name']):
+                errors['first_name'] = "First name must contain only character"        
+        if len(postData['email']) == 0:
+            errors['email'] = "Email is required"
+        else:
+            if not EMAIL_REGEX.match(postData['email']):
+                errors['email'] = "Please enter valid email address"
+        if len(postData['password']) == 0:
+            errors['password'] = "Password is required"
+        if len(postData['confirmpw']) == 0:
+            errors['confirmpw'] = "Password is required"
+        if (len(postData['confirmpw']) > 0 and len(postData['password']) > 0) and postData['password'] != postData['confirmpw']:
+            errors['password'] = "Password doesn't match"
+        
+        return errors
+    
+    def login_validator(self, postData):
+        errors = {}
+        if len(postData['email']) == 0 or len(postData['password']) == 0:
+            errors['general'] = "Email and password are required to login to the app"
+                
+        return errors
 
 class User(models.Model):   
     name = models.CharField(max_length=255)
@@ -14,3 +52,7 @@ class User(models.Model):
     user_block = models.ManyToManyField('self', related_name='blockes', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    age = 0
+
+    objects = UserManager()
