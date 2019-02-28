@@ -1,11 +1,9 @@
 
 <div class="row">
     <div class="col-md-3 mb-4">
-        <img src="/static/dating/images/picture.jpg" alt="profile_pic">
         {% for pic in user.pictures.all %}
-            {{pic.pictures.is_profile_pic}}
-            {% if pic.pictures.is_profile_pic == 'TRUE' %}
-            {{pic.pictures.url}}
+            {% if pic.is_profile_pic == 'TRUE' %}
+            <img src="..{{pic.pictures.url}}" alt="profile_pic">
             {% endif %}
         {% endfor %}
     </div>
@@ -97,24 +95,34 @@
             <input type="submit" class="btn btn-light" value="UPDATE PROFILE">                                              
         </form>
     </div>
-    <div class="container row">
-        <p class="col-md-12 mb-4">Pictures</p>
+    <div class="container row pb-4">
+        <p class="col-md-12 mb-4"><b> Pictures </b></p>        
+            
         {% for pic in pictures %}
-            {{pic.pictures.is_profile_pic}}
             <div class="col-md-3 mb-4">
-                    <img src="..{{pic.pictures.url}}" alt="profile_pic">
-                <label for="profile_pic_radio">
-                    <input type="radio" name="profile_pic_radio" value=""> 
-                    Profile Pciture
-                </label>
+                <div><img src="..{{pic.pictures.url}}" alt="profile_pic"></div>
+                {% if pic.is_profile_pic == 'TRUE' %}
+                    <input type="submit" class="btn btn-light" value="Change Profile Pic" disabled>
+                {% else %}
+                    <form action="{% url 'change_profile_picture' pic.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-light" value="Change Profile Pic">
+                    </form>
+                {% endif %}
+                <form action="{% url 'delete_picture' pic.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-light" value="Detele">
+                </form>
             </div>
-        {% endfor %}        
-        <div style="background-color: rgba(224, 219, 219, 0.5); width: 100%; padding-top: 15px;">
+        {% endfor %}                    
+        
+        <div style="background-color: rgba(224, 219, 219, 0.5); width: 100%; padding-top: 15px; padding-bottom: 15px;">
             <form class="col-md-12" action="{% url 'upload_picture' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input id="id_image" type="file" class="font-control" name="prof_picture">            
                 <input type="submit" class="btn btn-light" value="Upload" />
             </form>
         </div>
+
     </div>
 </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from apps.login.models import User
+from apps.login.models import User, UserLike, UserBlock
 from .models import Picture, Question_answer, Message
 from django.utils.timezone import datetime
 from django.core.files.storage import FileSystemStorage
@@ -91,7 +91,7 @@ def my_matches(request):
         return redirect('../login/')
 
     current_user = User.objects.get(id=request.session['user_id'])
-    user_list = User.objects.filter(gender=current_user.seeking_for).exclude(id=request.session['user_id']).exclude(user_block=current_user)
+    user_list = User.objects.filter(gender=current_user.seeking_for).exclude(id=request.session['user_id'])
     
     # ----- age calculation ----- #
     date_format = "%Y-%m-%d"
@@ -158,15 +158,19 @@ def logout(request):
 def block_member(request, user_id):
     current_user = User.objects.get(id=request.session['user_id'])
     user = User.objects.get(id=user_id)
-    user.user_block.add(current_user)
+    UserBlock.objects.create(block_by=current_user, blocked=user)
     return redirect(my_matches)
 
 def like_person(request, user_id):
     current_user = User.objects.get(id=request.session['user_id'])
     user = User.objects.get(id=user_id)
-    user.user_like.add(current_user)
-    print(current_user) 
+    user_like = UserLike.objects.all()
+    print(len(user_like))
+    print(current_user)
     print(user)
+    user_l = UserLike.objects.create()
+    user_l.like_by.add(current_user)
+    user_l.liked.add(user)        
     return redirect(my_matches)
 
 def upload_picture(request):
@@ -182,6 +186,24 @@ def upload_picture(request):
 
     return redirect(get_profile_index)
 
-def change_profile_picture(request):
+def change_profile_picture(request, pic_id):
+
     user = User.objects.get(id=request.session['user_id'])
+    pictures = Picture.objects.filter(user=user)
+
+    for pic in pictures:
+        photos = Picture.objects.get(id=pic.id)
+        photos.is_profile_pic = 'FALSE'
+        photos.save()
+
+    picture = Picture.objects.get(id=pic_id)
+    picture.is_profile_pic = 'TRUE'
+    picture.save()
+    picture = Picture.objects.get(id=pic_id)
+
+    return redirect(get_profile_index)
+
+def delete_picture(request, pic_id):    
+    picture = Picture.objects.get(id=pic_id)
+    picture.delete()
     return redirect(get_profile_index)

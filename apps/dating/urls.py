@@ -20,6 +20,8 @@ urlpatterns = [
     url(r'^like_person/(?P<user_id>\d+)$',views.like_person, name="like_person"),
     url(r'^block_person/(?P<user_id>\d+)$',views.block_member, name="block_person"),    
     url(r'^upload_picture$',views.upload_picture, name="upload_picture"),
+    url(r'^change_profile_picture/(?P<pic_id>\d+)$', views.change_profile_picture, name="change_profile_picture"),
+    url(r'^delete_picture/(?P<pic_id>\d+)$', views.delete_picture, name="delete_picture"),
 ]
 
 if settings.DEBUG:

@@ -6,11 +6,21 @@
         
         {% for member in user_list %}
             <div style="margin-right: 5px; margin-bottom: 5px;">
-                <img src="{% static 'login/images/picture.jpg' %}" alt=""/>                
+                
+                {% if member.pictures.all %}
+                    {% for pic in member.pictures.all %}                            
+                        {% if pic.is_profile_pic == 'TRUE' %}
+                            <img class="member_photo" src="..{{pic.pictures.url}}" alt="profile_pic">
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+                {% endif %}                              
+                
                 <div class="little_bar" style="text-align: center; width: 100%;">
                     <a href="{% url 'block_person' user.id %}"><img src="{% static 'login/images/cross_icon.png' %}" /></a>
-                    {% if user in member.user_like.all %}
-                        
+                    {% if user in member.liked.all %}
+                        <img src="{% static 'dating/images/liked_heart.png' %}" />
                     {% else %}
                         <a href="{% url 'like_person' user.id %}"><img src="{% static 'login/images/heart.png' %}" /></a>
                     {% endif %}

@@ -48,11 +48,23 @@ class User(models.Model):
     age_between = models.CharField(max_length=45)
     zip_code = models.CharField(max_length=45)
     summery = models.TextField(null=True)
-    user_like = models.ManyToManyField('self', related_name='likes', null=True)
-    user_block = models.ManyToManyField('self', related_name='blockes', null=True)
+    # user_like = models.ManyToManyField('self', related_name='likes')
+    # user_block = models.ManyToManyField('self', related_name='blockes')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     age = 0
 
     objects = UserManager()
+
+class UserLike(models.Model):
+    like_by = models.ManyToManyField(User, related_name='like_by')
+    liked = models.ManyToManyField(User, related_name='liked')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class UserBlock(models.Model):
+    block_by = models.ManyToManyField(User, related_name='block_by')
+    blocked = models.ManyToManyField(User, related_name='blocked')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

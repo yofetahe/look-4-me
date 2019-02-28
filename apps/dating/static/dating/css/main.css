@@ -32,6 +32,11 @@ h3.page_title{
     width: 13%;
 }
 
+img.member_photo{
+    width: 155px;
+    height: auto;
+}
+
 /* ====== My profile page ====== */
 .main_links{
     padding-top: 10px;
