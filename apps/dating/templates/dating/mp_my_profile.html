@@ -1,11 +1,15 @@
-
+{% load static %}
 <div class="row">
     <div class="col-md-3 mb-4">
-        {% for pic in user.pictures.all %}
-            {% if pic.is_profile_pic == 'TRUE' %}
-            <img src="..{{pic.pictures.url}}" alt="profile_pic">
-            {% endif %}
-        {% endfor %}
+        {% if user.pictures.all %}
+            {% for pic in user.pictures.all %}
+                {% if pic.is_profile_pic == 'TRUE' %}
+                <img class="member_photo" src="..{{pic.pictures.url}}" alt="profile_pic">
+                {% endif %}
+            {% endfor %}
+        {% else %}                
+            <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+        {% endif %} 
     </div>
     <div class="col-md-9 mb-4">
         
@@ -100,7 +104,7 @@
             
         {% for pic in pictures %}
             <div class="col-md-3 mb-4">
-                <div><img src="..{{pic.pictures.url}}" alt="profile_pic"></div>
+                <div><img class="member_photo" src="..{{pic.pictures.url}}" alt="profile_pic"></div>
                 {% if pic.is_profile_pic == 'TRUE' %}
                     <input type="submit" class="btn btn-light" value="Change Profile Pic" disabled>
                 {% else %}

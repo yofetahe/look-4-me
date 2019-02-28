@@ -92,7 +92,11 @@ def my_matches(request):
 
     current_user = User.objects.get(id=request.session['user_id'])
     user_list = User.objects.filter(gender=current_user.seeking_for).exclude(id=request.session['user_id'])
+    liked_user = UserLike.objects.filter(like_by=current_user)
     
+    for user in liked_user:
+        print(user.liked.name)
+
     # ----- age calculation ----- #
     date_format = "%Y-%m-%d"
     today = datetime.strptime(str(datetime.now().date()), date_format)    
@@ -110,7 +114,8 @@ def my_matches(request):
 
     context = {
         "user_list": user_list,
-        "user": current_user
+        "user": current_user,
+        "liked_user": liked_user
     }
 
     return render(request, 'dating/my_matches.html', context)
@@ -158,31 +163,21 @@ def logout(request):
 def block_member(request, user_id):
     current_user = User.objects.get(id=request.session['user_id'])
     user = User.objects.get(id=user_id)
-    UserBlock.objects.create(block_by=current_user, blocked=user)
+    UserBlock.objects.create(block_by=current_user, blocked=user)    
     return redirect(my_matches)
 
 def like_person(request, user_id):
     current_user = User.objects.get(id=request.session['user_id'])
     user = User.objects.get(id=user_id)
-    user_like = UserLike.objects.all()
-    print(len(user_like))
-    print(current_user)
-    print(user)
-    user_l = UserLike.objects.create()
-    user_l.like_by.add(current_user)
-    user_l.liked.add(user)        
+    UserLike.objects.create(like_by=current_user, liked=user)    
+    print("like_by ", current_user.name)
+    print("liked ", user.name)
     return redirect(my_matches)
 
 def upload_picture(request):
     if request.method == 'POST':
-        uploaded_file = request.FILES['prof_picture']
-        fs = FileSystemStorage()
-        file_name = fs.save(uploaded_file.name, uploaded_file)
-        print(uploaded_file.name)
-        print(uploaded_file.size)
-        print(fs.url(file_name))
         current_user = User.objects.get(id=request.session['user_id'])
-        Picture.objects.create(pictures=request.FILES['prof_picture'], pictures_url=fs.url(file_name), is_profile_pic='0', user=current_user)
+        Picture.objects.create(pictures=request.FILES['prof_picture'], is_profile_pic='0', user=current_user)
 
     return redirect(get_profile_index)
 

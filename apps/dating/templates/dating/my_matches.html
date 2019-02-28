@@ -1,7 +1,7 @@
 {% extends 'dating/base_1.html' %} 
  
 {% block base_1_content %}
-{% load static %}
+    {% load static %}
     <div class="row">
         
         {% for member in user_list %}
@@ -13,18 +13,19 @@
                             <img class="member_photo" src="..{{pic.pictures.url}}" alt="profile_pic">
                         {% endif %}
                     {% endfor %}
-                {% else %}
+                {% else %}                
                     <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
                 {% endif %}                              
                 
                 <div class="little_bar" style="text-align: center; width: 100%;">
-                    <a href="{% url 'block_person' user.id %}"><img src="{% static 'login/images/cross_icon.png' %}" /></a>
-                    {% if user in member.liked.all %}
-                        <img src="{% static 'dating/images/liked_heart.png' %}" />
-                    {% else %}
-                        <a href="{% url 'like_person' user.id %}"><img src="{% static 'login/images/heart.png' %}" /></a>
-                    {% endif %}
-                    <a href="{% url 'search' user.id %}"><img src="{% static 'login/images/chat_icon.png' %}" /></a>
+                    
+                    <a href="{% url 'block_person' member.id %}"><img src="{% static 'login/images/cross_icon.png' %}" /></a>
+                    {% for x in liked_user %}
+                        {% if x.liked != member %}                            
+                            <a href="{% url 'like_person' member.id %}"><img src="{% static 'login/images/heart.png' %}" /></a>
+                        {% endif %}
+                    {% endfor %}
+                    <a href="{% url 'search' member.id %}"><img src="{% static 'login/images/chat_icon.png' %}" /></a>
                 </div>
                 <div style="text-align: center">
                     <span>{{member.name}}(Age: {{member.age}})</span><br>

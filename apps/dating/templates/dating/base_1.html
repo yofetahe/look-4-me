@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-md-3">                    
                     <div class='border mt-sm-3 text-center'>
+                        <img src="/media/photos/pic1.jpg" alt="p">
                         {% if user.pictures.all %}
                             {% for pic in user.pictures.all %}                            
                                 {% if pic.is_profile_pic == 'TRUE' %}
@@ -17,7 +18,7 @@
                         {% endif %}  
 
                         <p>Welcome, <b>{{user.name}}</b></p>
-                        <p>DOB - {{user.age}}</p>
+                        <p>Age - {{user.age}}</p>
                         <p>Location - {{user.zip_code}}</p>
                         <p>Your are seeking for - {{user.seeking_for}}</p>
                     </div>

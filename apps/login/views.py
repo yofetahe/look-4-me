@@ -78,7 +78,8 @@ def getQuestionnaireForm(request):
 def login(request):
     if 'user' in request.session:
         return redirect(success)
-    
+    print("--------- in --------------")
+    print(request.POST['email'])
     errors = User.objects.login_validator(request.POST)
     
     if len(errors) > 0:

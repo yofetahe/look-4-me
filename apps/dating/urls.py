@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^upload_picture$',views.upload_picture, name="upload_picture"),
     url(r'^change_profile_picture/(?P<pic_id>\d+)$', views.change_profile_picture, name="change_profile_picture"),
     url(r'^delete_picture/(?P<pic_id>\d+)$', views.delete_picture, name="delete_picture"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
