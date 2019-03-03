@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^get_signup_form/$', views.get_signup_form, name="get_signup_form"),
     url(r'^get_login_form/$', views.get_login_form, name="get_login_form"),
     url(r'^success/$', views.success, name="success"),
+    url(r'^questionnaire_answer/$', views.questionnaire_answer, name="questionnaire_answer"),
+    url(r'^admin_login/$', views.admin_login, name="admin_login"),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

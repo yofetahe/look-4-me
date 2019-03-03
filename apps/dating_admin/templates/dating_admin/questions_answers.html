@@ -1,7 +1,7 @@
 
 <p class="category_title">Questions Category</p>
 <div class="left">
-    <table>
+    <table class=" table table-sm table-hover table-responsive{-sm|-md|-lg|-xl}  ">
         <thead>
             <tr>
                 <th>Category</th>
@@ -10,75 +10,165 @@
             </tr>
         </thead>
         <tbody>
+                {% for category in category_all %}
             <tr>
-                <td>Category 1</td>
+                <td>{{category.cat_title}}</td>
                 <td>Active</td>
-                <td> <a href="">Update</a> &nbsp; | &nbsp; <a href="">Delete</a>  &nbsp; | &nbsp; <a href="">Add Questions</a> </td>
+                <td> <a href="#" class="update1" name='{{category.id}}'>Update</a> &nbsp; | &nbsp; <a href="{% url 'delete_category' category.id %}">Delete</a>  &nbsp; </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
-<div class="right">
-    <form action="">
+<div id="form1" class="right">
+    <form action="{% url 'add_category' %}" method="POST">
+        {% csrf_token %}
         <div class="form-group">
-            <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Add Category"></textarea>
+            <input  type="text" name="category_title" class="form-control" id="" cols="30" rows="3" placeholder="Add Category">
         </div>
         <input type="submit" value="ADD" class="btn btn-light">
     </form>
 </div>
-
+<hr>
 <p class="category_title">Questions</p>
 <div class="left">
-    <table>
+    <table class=" table table-sm table-hover   table-responsive{-sm|-md|-lg|-xl} " >
         <thead>
             <tr>
-                <th>Questions</th>
+                <th>Question</th>
+                <th>Category</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
+            {% for question in questions_all %}
             <tr>
-                <td>Questions 1</td>
-                <td>Active</td>
-                <td> <a href="">Update</a> &nbsp; | &nbsp; <a href="">Delete</a> &nbsp; | &nbsp; <a href="">Add Choices</a> </td>
+                <td>{{question.question_content}}</td>
+                <td>{{question.category.cat_title}}</td>
+                <td>{{question.status}}Active</td>
+                <td> <a href="#" class="update2" name="{{question.id}}">Update</a> &nbsp; | &nbsp; <a href="{% url 'delete_question' question.id %}">Delete</a></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
-<div class="right">
-    <form action="">
+<div id="form2"  class="right">
+    <form action="{% url 'add_question' %}"  method="POST">
+            {% csrf_token %}
         <div class="form-group">
-            <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Add Category"></textarea>
+            <input  type="text" name="question_content" class="form-control" id="" cols="30" rows="3" placeholder="Add Question">
+            <br>
+            <select class="custom-select" name="category_option">
+                <option selected>Select Question Category</option>
+                {% for category in category_all %}
+                <option  value="{{category.id}}">{{category.cat_title}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <select class="custom-select" name="question_type">
+                <option selected>Select Question Type</option>
+                <option value="1">Self</option>
+                <option value="2">Other</option>
+                <option value="11">Self-Algorithm</option>
+                <option value="22">Other-Algorithm</option>
+            </select>
+
         </div>
         <input type="submit" value="ADD" class="btn btn-light">
     </form>
 </div>
-
+<hr>
 <p class="category_title">Choices</p>
 <div class="left">
-    <table>
+    <table class=" table table-sm table-hover table-responsive{-sm|-md|-lg|-xl}  ">
         <thead>
             <tr>
                 <th>Choices</th>
+                <th>Question #</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
+            {% for choice in choice_all %}
             <tr>
-                <td>Choices 1</td>
+                <td>{{choice.choice_content}}</td>
+                <td>{{choice.questions.id}}</td>
                 <td>Active</td>
-                <td> <a href="">Update</a> &nbsp; | &nbsp; <a href="">Delete</a> </td>
+                <td> <a href="#" class="update3" name="{{choice.id}}">Update</a> &nbsp; | &nbsp; <a href="{% url 'delete_choice' choice.id %}">Delete</a> </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
-<div class="right">
-    <form action="">
+<div id="form3" class="right">
+    <form action="{% url 'add_choice' %}" method="POST">
+            {% csrf_token %}
         <div class="form-group">
-            <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Add Category"></textarea>
+            <input  type="text" name="question_choice" class="form-control" id="" cols="30" rows="3" placeholder="Add Answer Choice">
+            <br>
+            <select class="custom-select" name="question_option">
+                    <option selected>Select Question </option>
+                    {% for question in questions_all %}
+                    <option  value="{{question.id}}">{{question.question_content}}</option>
+                    {% endfor %}
+            </select>
+    
         </div>
         <input type="submit" value="ADD" class="btn btn-light">
     </form>
 </div>
+
+
+
+<style>
+th{
+    background-color: rgba(255, 199, 205, 0.808);
+}
+</style>
+
+
+<script>
+    $(document).ready(function(){
+        $('.update1').click(function() {
+            update_id=$(this).attr('name')
+            $.ajax({
+                url:  '../category/update/',
+                data:{'id':update_id},
+                type:  'get',
+                dataType:  'html',
+                success:  function (data) {
+                    $('#form1').html(data)
+                }
+            });
+        });
+
+        $('.update2').click(function() {
+            update_id=$(this).attr('name')
+            $.ajax({
+                url:  '../question/update/',
+                data:{'id':update_id},
+                type:  'get',
+                dataType:  'html',
+                success:  function (data) {
+                    $('#form2').html(data)
+                }
+            });
+        });
+
+        $('.update3').click(function() {            
+            update_id=$(this).attr('name')
+            $.ajax({
+                url:  '../choice/update/',
+                data:{'id':update_id},
+                type:  'get',
+                dataType:  'html',
+                success:  function (data) {
+                    $('#form3').html(data)
+                }
+            });
+        });
+    })
+</script>

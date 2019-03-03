@@ -2,15 +2,18 @@
 
 {% block base_content %}
 {% load static %}
+
             <div class="row">
                 <div class="col-md-3">                    
                     <div class='border mt-sm-3 text-center'>
-                        <img src="/media/photos/pic1.jpg" alt="p">
-                        {% if user.pictures.all %}
+                         {% if user.pictures.all %}
                             {% for pic in user.pictures.all %}                            
                                 {% if pic.is_profile_pic == 'TRUE' %}
-                                    {{pic.pictures.url}}
-                                    <img class="pic_search member_photo" src="..{{pic.pictures.url}}" alt="profile_pic">
+                                    {% for key, value in photo_url.items %} 
+                                    {% if key == pic.id %}                                                                 
+                                    <img class="pic_search member_photo" src="{% static value %}" alt="profile_pic">
+                                    {% endif %}
+                                    {% endfor %} 
                                 {% endif %}
                             {% endfor %}
                         {% else %}
@@ -20,7 +23,7 @@
                         <p>Welcome, <b>{{user.name}}</b></p>
                         <p>Age - {{user.age}}</p>
                         <p>Location - {{user.zip_code}}</p>
-                        <p>Your are seeking for - {{user.seeking_for}}</p>
+                        <p>You are seeking - {{user.seeking_for}}</p>
                     </div>
                 </div>
                 <div class='col-md-9'>

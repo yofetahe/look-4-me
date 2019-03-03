@@ -10,6 +10,8 @@ $(document).ready(function(){
             type:  'get',
             dataType:  'html',
             success:  function (data) {
+                document.getElementById('app_members').className = ''
+                document.getElementById('question_and_answers').className = 'active'
                 $('#content').html(data)
             }
         });
@@ -21,6 +23,8 @@ $(document).ready(function(){
             type:  'get',
             dataType:  'html',
             success:  function (data) {
+                document.getElementById('app_members').className = 'active'
+                document.getElementById('question_and_answers').className = ''
                 $('#content').html(data)
             }
         });
@@ -28,16 +32,15 @@ $(document).ready(function(){
 })
 
 </script>
-<div>
-    <h3 class="page_title"> Admin </h3>
-    <div class="header_link_container">
-        <a href="#" id="app_members">App Members</a> &nbsp; | &nbsp; 
+<div>    
+    <div class="messages-tabs">
+        <a href="#" id="app_members" class="active">App Members</a>
         <a href="#" id="question_and_answers">Questions and Answers</a>
     </div>
 </div>
-<hr>
-<div id="content">
-    
+
+<div id="content" style="padding-top: 15px">
+    {% include 'dating_admin/app_members.html' %}
 </div>
 
 {% endblock content %}

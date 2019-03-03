@@ -1,110 +1,134 @@
-*{
+
+* {
     /* outline: 1px solid red; */
 }
-#sm-logo{
+
+#sm-logo {
     background-image: url('/static/login/images/logo_bg.png');
-    background-position:center;
-    background-repeat:no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: contain;
-    height:100px;
-    width:150px;
+    height: 100px;
+    width: 150px;
     text-align: center;
     padding-top: 15px;
     color: white;
     font-size: 25px;
     display: inline-block;
 }
-.form_container_inside{
+
+.form_container_inside {
     padding-top: 100px;
 }
-.header_link_container{
+
+.header_link_container {
     text-align: right;
     display: inline-block;
     vertical-align: middle;
     width: 86%;
 }
-    .header_link_container a{
-        text-decoration: none;                
-    }
 
-h3.page_title{
+.header_link_container a {
+    text-decoration: none;
+}
+
+h3.page_title {
     display: inline-block;
     width: 13%;
 }
 
-img.member_photo{
-    width: 155px;
-    height: auto;
+img.member_photo {
+    width: auto;
+    height: 145px;
 }
+
 
 /* ====== My profile page ====== */
-.main_links{
+
+.main_links {
     padding-top: 10px;
 }
-div.profile_image{
+
+div.profile_image {
     display: inline-block;
-    
     vertical-align: top;
 }
-div.profile_content{
+
+div.profile_content {
     display: inline-block;
-    
     vertical-align: top;
 }
-.update_form{
+
+.update_form {
     color: black;
 }
-.uploaded_pictures{
+
+.uploaded_pictures {
     padding-top: 15px;
 }
-.uploaded_pictures>div{
-    display: inline-block;            
+
+.uploaded_pictures>div {
+    display: inline-block;
 }
+
 
 /* ====== Admin - Questions and Answers ====== */
-.category_title{
+
+.category_title {
     font-weight: bold;
 }
-.left{
-    vertical-align: top;
-    display: inline-block;
-    width: 48%;
-}
-.right{
+
+.left {
     vertical-align: top;
     display: inline-block;
     width: 48%;
 }
 
+.right {
+    vertical-align: top;
+    display: inline-block;
+    width: 48%;
+}
+
+
 /* ====== my matches ====== */
+
 .navbar {
     font-family: cursive;
     font-size: 15px;
     vertical-align: top;
+    margin-top: 5px;
+    z-index: 100;
+    position: relative;
+    left: 20%;
 }
 
 .navbar-nav {
-    float: right
+    /* float: right; */
+    background-color: rgba(255, 76, 93, .1);
 }
 
-.navbar-toggler {
-    margin-left: 85%;
-}        
+.navbar-toggler {}
+
 .info_display {
     position: absolute;
     top: 120px;
     width: 100%;
 }
+
 .side-bar {
     padding: 2%
-}        
+}
+
 .pic_search {
     border-radius: 50%;
-}        
+}
+
 .main_info {
     text-align: center;
     padding: 2% 0px 0px 0px;
 }
+
 .show_matching {
     height: 200px;
     width: 200px;
@@ -113,22 +137,27 @@ div.profile_content{
     display: inline-block;
     margin: 13px;
 }
+
 .little_bar {
     width: 100%;
     height: 40px;
     margin-top: 0px;
     background-color: rgba(255, 0, 0, 0.2)
 }
+
 .little_bar img {
     width: 35px;
     height: 35px;
     margin: 2px 7px 0px 7px;
 }
+
 .show_info {
     margin: 133px 0px 0px 0px;
 }
 
+
 /* ====== Search Matches ====== */
+
 .show_matching {
     height: 200px;
     width: 200px;
@@ -151,9 +180,10 @@ div.profile_content{
     margin: 2px 7px 0px 7px;
 }
 
-.navbar-nav {
+
+/* .navbar-nav {
     float: right
-}
+} */
 
 .show_info {
     margin: 133px 0px 0px 0px;
@@ -169,8 +199,12 @@ div.profile_content{
     text-align: left;
 }
 
+
 /* ====== Messages and Likes ====== */
+
+
 /* Style the tab buttons */
+
 .tablink {
     background-color: #555;
     color: white;
@@ -182,30 +216,44 @@ div.profile_content{
     font-size: 17px;
     width: 25%;
 }
+
+
 /* Change background color of buttons on hover */
 
 .tablink:hover {
     background-color: #777;
     border: 1px solid black;
 }
+
+
 /* Set default styles for tab content */
 
 .tabcontent {
     color: white;
-    display: none;
     padding: 0px;
     text-align: left;
     padding-left: 10px;
-}
-
-#Message {
+    width: 100%;
     background: rgba(200, 54, 54, 0.5);
+    display: inline-block;
 }
 
-#Like {
+.display_area {
+    width: 100%
+}
+
+.message-btn {
+    margin-left: 15px;
+}
+
+/* #message {
+    background: rgba(238, 117, 117, 0.5);
+}
+
+#like {
     background: rgba(200, 54, 54, 0.5);
     text-align: center
-}
+} */
 
 .index {
     margin: 0px;
@@ -246,65 +294,44 @@ div.profile_content{
 
 /* ======= Selected Person Profile ====== */
 
-.show_matching {
-height: 200px;
-width: 200px;
-padding: 0px;
-border: 2px solid black;
-display: inline-block;
-margin: 13px;
-}
-
-.little_bar {
-width: 100%;
-height: 40px;
-margin-top: 0px;
-background-color: rgba(255, 0, 0, 0.2)
-}
-
-.little_bar img {
-width: 35px;
-height: 35px;
-margin: 2px 7px 0px 7px;
-}
-
 .navbar-nav {
-float: right
-}
-
-.show_info {
-margin: 133px 0px 0px 0px;
+    float: right
 }
 
 .search_form {
-border-bottom: 1px solid black;
-display: inline-block;
-color: black;
-margin: 0px;
-padding: 0px;
-font-size: 13px;
-text-align: left;
+    border-bottom: 1px solid black;
+    display: inline-block;
+    color: black;
+    margin: 0px;
+    padding: 0px;
+    font-size: 13px;
+    text-align: left;
 }
 
 .self_info {
-text-align: left;
-padding: 0px
+    text-align: left;
+    vertical-align: top;
+    padding: 0px;
+}
+
+#one {
+    vertical-align: top;
 }
 
 .title {
-font-size: 20px;
-font-weight: 600
+    font-size: 20px;
+    font-weight: 600
 }
 
 .content {
-font-size: 12px;
-font-family: sans-serif;
+    font-size: 12px;
+    font-family: sans-serif;
 }
 
 .upload_pic {
-height: 100px;
-width: 100px;
-border: 2px solid black;
-display: inline-block;
-margin-top: 4px
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+    display: inline-block;
+    margin-top: 4px
 }

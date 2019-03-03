@@ -84,17 +84,20 @@ form#signup_form{
     text-decoration: none;
     padding-left: 20px;            
 }
-
+div.messages-tabs{
+    border-bottom: 1px rgb(87, 37, 37) solid;
+    margin: 0px;
+}
 div.my-tabs{
     border-bottom: 1px white solid;
     margin: 0px;
 }
-div.my-tabs a{
+div.my-tabs a, div.messages-tabs a{
     display: inline-block;
-    width: auto;    
+    width: 200px;    
     text-align: center;
     padding: 10px 5px;
-    color: white;
+    color: rgb(87, 37, 37);
     cursor: pointer;
 }
 div.my-tabs a.active{
@@ -102,7 +105,12 @@ div.my-tabs a.active{
     font-weight: bold;
     color:rgb(255, 255, 255)
 }
-
+div.messages-tabs a.active{
+    border-top: 1px rgb(87, 37, 37) solid;
+    background: rgba(238, 117, 117, 0.5);
+    font-weight: bold;
+    color:white;
+}
 .questions_list{
     min-height: 450px;
 }
@@ -110,4 +118,8 @@ div.my-tabs a.active{
 .registration_form{
     padding: 15px;
     color: white;
+}
+
+div.footer_container{
+    padding: 15px 0px;
 }

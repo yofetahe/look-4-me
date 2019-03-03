@@ -28,7 +28,14 @@ class UserManager(models.Manager):
             errors['confirmpw'] = "Password is required"
         if (len(postData['confirmpw']) > 0 and len(postData['password']) > 0) and postData['password'] != postData['confirmpw']:
             errors['password'] = "Password doesn't match"
-        
+        if not 'iam' in postData:
+            errors['iam'] = "Please select your gender"
+        if not 'seekfor' in postData:
+            errors['seekfor'] = "Please select your sexaul oritation"
+        if postData['age_between']=='':
+            errors['age_between'] = "Please select age"
+        if len(postData['zipcode']) == 0:
+            errors['zipcode'] = "Zipcode is required"
         return errors
     
     def login_validator(self, postData):
@@ -54,6 +61,8 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     age = 0
+    like_status = ''
+    block_status = ''
 
     objects = UserManager()
 

@@ -1,0 +1,34 @@
+{% load staticfiles%}
+
+<div class="row">
+{% if user_list %}
+    {% for member in user_list %}
+        <div style="margin-right: 5px; margin-bottom: 5px;">
+
+            {% if member.liked.pictures.all %}
+                {% for pic in member.liked.pictures.all %}  
+                    {% if pic.is_profile_pic == 'TRUE' %}
+                        {% for key, value in photo_url.items %}
+                            {% if key == pic.id %}
+                                <img class="member_photo" src="{% static value %}" alt="profile_pic">
+                            {% endif %}
+                        {% endfor %} 
+                    {% endif %}
+                {% endfor %}
+            {% else %}                
+                <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+            {% endif %}
+
+            <div class="little_bar" style="text-align: center; width: 100%;">            
+                <a href="{% url 'search' member.liked.id %}"><img src="{% static 'login/images/chat_icon.png' %}" /></a>
+            </div>
+            <div style="text-align: center">
+                <span>{{member.liked.name}}(Age: {{member.liked.age}})</span><br>
+                <span>{{member.liked.zip_code}}</span>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p><i>You don't like no one</i></p>
+{% endif %}
+</div>

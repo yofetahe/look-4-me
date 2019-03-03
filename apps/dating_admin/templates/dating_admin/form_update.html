@@ -1,0 +1,12 @@
+
+<form action="{% url 'update_add_category' category_all.id %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            
+            <input  type="text" name="category_title" value="{{category_all.cat_title}}" class="form-control" id="" cols="30" rows="3" placeholder="Add Category">
+            <input type="hidden" name='category_id' value='{{category_id}}'>
+        </div>
+        <input type="submit" value="Update" class="btn btn-light">
+</form>
+    
+

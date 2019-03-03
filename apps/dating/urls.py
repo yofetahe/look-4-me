@@ -12,8 +12,7 @@ urlpatterns = [
     url(r'^get_statistics/$', views.get_statistics, name="get_statistics"),
     url(r'^my_matches$',views.my_matches, name="my_matches"),
     url(r'^search_matches$',views.search_matches, name="search_matches"),
-    # url(r'^search_process$',views.search_process),
-    # url(r'^posts$', views.post, name='posts'),
+    url(r'^search_memebers/$', views.search_memebers, name="search_memebers"),    
     url(r'^search/(?P<user_id>\d+)$',views.user_info_display, name="search"),
     url(r'^messages_likes$',views.messages_likes, name="messages_likes"),
     url(r'^logout$',views.logout, name="logout"),
@@ -22,7 +21,15 @@ urlpatterns = [
     url(r'^upload_picture$',views.upload_picture, name="upload_picture"),
     url(r'^change_profile_picture/(?P<pic_id>\d+)$', views.change_profile_picture, name="change_profile_picture"),
     url(r'^delete_picture/(?P<pic_id>\d+)$', views.delete_picture, name="delete_picture"),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^push_message/(?P<user_id>\d+)$', views.push_message, name="push_message"),
+    url(r'^display_messages$',views.display_messages, name="display_messages"),
+    url(r'^message_picker$',views.message_picker, name="message_picker"),
+    url(r'^like_pic_dispaly$',views.like_pic_dispaly, name="like_pic_dispaly"),
+    url(r'^mes_reply/(?P<user_wb_id>[0-9]+)$',views.mes_reply),
+    url(r'^delete_message/(?P<mesg_id>\d+)$',views.delete_message),
+   
 
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,9 +1,37 @@
-<div class='show_matching col-sm-11 col-md-6 col-lg-3 ' style=" background: url('/static/login/images/bg_image.jpg');background-position: center;background-size: cover; ">
-    <!-- NEED FOR LOOP1 -->
-    <p class="show_info">{{x.full_name}}({{x.age}})</p>
-    <div class="little_bar">
-        <a href=""><img src="{% static 'login/images/cross_icon.png' %}" /></a>
-        <a href=""><img src="{% static 'login/images/heart.png' %}" /></a>
-        <a href=""><img src="{% static 'login/images/chat_icon.png' %}" /></a>
-    </div>
+{% load staticfiles%} 
+<div class='row'>
+    
+    {% for member in user %}
+            <div style="margin-right: 5px; margin-bottom: 5px;">
+                {% if member.pictures.all %}
+                    {% for pic in member.pictures.all %}                            
+                        {% if pic.is_profile_pic == 'TRUE' %}
+                            {% for key, value in photo_url.items %}
+                                {% if key == pic.id %}
+                                    <img class="member_photo" src="{% static value %}" alt="profile_pic">
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}                
+                    <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+                {% endif %}                              
+                
+                <div class="little_bar" style="text-align: center; width: 100%;">                    
+                    <a href="{% url 'block_person' member.id %}"><img src="{% static 'login/images/cross_icon.png' %}" /></a>
+                    {% if member in liked_user_array %}
+                        <img src="{% static 'dating/images/liked_heart.png' %}" />
+                    {% else %}
+                        <a href="{% url 'like_person' member.id %}"><img src="{% static 'login/images/heart.png' %}" /></a>
+                    {% endif %}
+                    <a href="{% url 'search' member.id %}"><img src="{% static 'login/images/chat_icon.png' %}" /></a>
+                </div>
+                <div style="text-align: center">
+                    <span>{{member.name}}(Age: {{member.age}})</span><br>
+                    <span>{{member.zip_code}}</span>
+                </div>
+            </div>
+        {% endfor %}
+
+    
 </div>

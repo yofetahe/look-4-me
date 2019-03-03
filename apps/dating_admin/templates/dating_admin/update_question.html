@@ -1,0 +1,25 @@
+<form action="{% url 'update_add_question' question_id %}"  method="POST">
+        {% csrf_token %}
+    <div class="form-group">
+
+        <input  type="text" name="question_content" value="{{question.question_content}}" class="form-control" id="" cols="30" rows="3" placeholder="Update Question">
+        <br>
+        <select class="custom-select" name="category_option">
+            <option selected>Update Question Category</option>
+            {% for category in category_all %}
+            <option  value="{{category.id}}">{{category.cat_title}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <select class="custom-select" name="question_type">
+            <option selected>Update Question Type</option>
+            <option value="1">Self</option>
+            <option value="2">Other</option>
+            <option value="11">Self-Algorithm</option>
+            <option value="22">Other-Algorithm</option>
+        </select>
+    
+    </div>
+    <input type="submit" value="Update" class="btn btn-light">
+</form>

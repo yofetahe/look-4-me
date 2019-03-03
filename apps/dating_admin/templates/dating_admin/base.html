@@ -6,7 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Look-4-Me</title>
 
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    
+    <!--JQuery UI-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
     <!-- Begin - javascript and CSS required for implmenting dataTables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
@@ -15,12 +24,6 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <!-- end - javascript and CSS required for implmenting dataTables -->
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!--JQuery UI-->
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'login/css/main.css' %}">
@@ -84,11 +87,8 @@
                 Look4Me
             </div>
             <div class="header_link_container">
-                <a href="">My Matches</a> &nbsp; | &nbsp; 
-                <a href="">Search</a>  &nbsp; | &nbsp; 
-                <a href="">Messages and Links</a>  &nbsp; | &nbsp; 
-                <a href="">My Profile</a>  &nbsp; | &nbsp; 
-                <a href="">Log out</a>
+                <a href="#" style="text-decoration: none; color:black;">ADMIN PAGE</a> &nbsp; | &nbsp;
+                <a href="{% url 'admin_logout' %}">Log out</a>
             </div>
         </div>
     </div>

@@ -3,102 +3,132 @@
 {% load staticfiles%} 
 {% block base_1_content %}
 <script>
-        $(document).ready(function() {
-            $('#search_form').submit(function() {
-                $.ajax({
-                    url: '/login/search_process',
-                    method: 'post',
-                    data: $(this).serialize(),
-                    successcopy: function(serverResponse) {
-                        $('#show_matching').html(serverResponse)
-                    }
-                })
-                return false;
+    $(document).ready(function() {
+        // $('#search_form').submit(function(e) {
+        //     alert("in")
+        //     e.preventDefault()
+        //     $.ajax({
+        //         url: '/search_memebers/',
+        //         method: 'post',
+        //         data: $(this).serialize(),
+        //         success: function(serverResponse) {
+        //             alert("in")
+        //             $('#search_result').html(serverResponse)
+        //         }
+        //     })
+        //     return false;
+        // })
+
+        $('#search_form').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url: '/dating/search_memebers/',
+                method: 'post',
+                data: $(this).serialize(),
+                success: function(serverResponse) {
+                    $('#search_result').html(serverResponse)
+                }
             })
-        })
-    </script>
-<form id="search_form" class="search_form col-sm-11" action="" method="POST">
+        });
+    })
+</script>
+
+<form id="search_form" class="col-sm-12" action="{% url 'search_memebers' %}" method="POST">
     {%csrf_token%}
-    <div class='col-sm-11 col-xl-4  d-inline-block'>
-        <div class='row'>
-            <p class="col-sm-5">Seeking for</p>
-            <div class='col-sm-3'> <input type="radio" name="sexual_orientation" value="man">Man</div>
-            <div class='col-sm-4'><input type="radio" name="sexual_orientation" value="woman">Woman</div>
+    <div class='row'>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-5 col-form-label">Seeking for</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="seekfor" value="Man">
+                    <label class="form-check-label" for="inlineRadio1">Man</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="seekfor" value="Women">
+                    <label class="form-check-label" for="inlineRadio2">Women</label>
+                </div>
+            </div>
         </div>
-
-
-        <div class='row mt-sm-3'>
-            <p class="col-sm-5 ">Age between</p>
-            <select class='col-sm-5 ml-auto' name='age'>
-                    <option value="0">18-25</option>
-                    <option value="1">26-28</option>
-                    <option value="2">29-32</option>
-                    <option value="3">33-40</option>
-                    <option value="4">40-50</option>
-                    <option value="5">50+</option>
-            </select>
+        <div class="col-md-4">
+            <div class="form-group  row">
+                <label for="" class="col-sm-6 col-form-label">Age Between</label>
+                <div class="col-sm-6">
+                    <select name="age_between" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for age in age_range %}
+                            <option>{{age}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
         </div>
-
-        <div class='row mt-sm-3'>
-            <p class="col-sm-5">Ethnic Group</p>
-            <select class='col-sm-5 ml-auto' name='ethnic'>
-                        <option value="Amerindians">Amerindians</option>
-                        <option value="Africans">Africans</option>
-                        <option value="Chinese">Chinese</option>
-                        <option value="Indians">Indians</option>
-                        <option value="Europeans">Europeans</option>
-            </select>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6 col-form-label">Ethnic Group</label>
+                <div class="col-sm-6">
+                    <select name="ethnic_group" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for group in ethnic_group %}
+                            <option>{{group}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
         </div>
-    </div>
-
-
-    <div class='col-sm-11 col-xl-3 d-inline-block align-bottom'>
-        <div class='row mt-sm-3'>
-            <p class="col-sm-7 mr-auto ">Marital Status</p>
-            <select class='col-sm-5 ml-auto' name='marital'>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6 col-form-label">Marital Status</label>
+                <div class="col-sm-6">
+                    <select class='form-control' name='marital_status'>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                         <option value="separated">Separated</option>
                         <option value="divorced">Divorced</option>
-                </select>
-        </div>
-
-        <div class='row mt-sm-3'>
-            <p class="col-sm-5">Zip code</p>
-            <input class="col-sm-5 ml-auto" type="text" name='zip'>
-
-        </div>
-
-        <div class='row mt-sm-3'>
-            <p class="col-sm-5">Religion</p>
-            <select class='col-sm-5 ml-auto' name='religion'>
-                            <option value="Christianity ">Christianity </option>
-                            <option value="Islam">Islam </option>
-                            <option value="Catholicism">Catholicism</option>
-                            <option value="Hinduism">Hinduism</option>
-                            <option value="Agnosticism">Agnosticism</option>
-                </select>
-        </div>
-    </div>
-
-
-
-    <div class='col-sm-11 col-xl-4 d-inline-block align-top'>
-        <div class='row mt-sm-3'>
-            <p class="col-sm-6">Education level</p>
-            <select class='col-sm-5 ml-auto' name='edu_level'>
-                            <option value="bachelor">Bachelor</option>
-                            <option value="master">Master</option>
-                            <option value="doctor">doctor</option>
                     </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="zip_code" class="col-sm-6 col-form-label">Zip Code</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="zip_code" placeholder="">
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6">Religion</label>
+                <div class="col-sm-6">
+                    <select name="religion" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for rel in religion %}
+                            <option>{{rel}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>    
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6 col-form-label">Education level</label>
+                <div class="col-sm-6">
+                    <select name="educational_level" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for edu in educational_level %}
+                            <option>{{edu}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class='mb-sm-2'>
-        <input id="search_form_btn" class="offset-sm-9 offset-xl-10 mt-sm-2 col-sm-2 col-md-2 col-xl-1" type="submit" value="search">
+        <input name="search_form_btn" class="btn btn-light" type="submit" value="Search">
     </div>
 </form>
-
-<div id="show_matching">
+<hr>
+<div id="search_result" >
 
 </div>
 

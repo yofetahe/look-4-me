@@ -1,0 +1,16 @@
+
+
+<form action="{% url 'update_add_choice' choice_id %}" method="POST">
+        {% csrf_token %}
+    <div class="form-group">
+        <input  type="text" name="question_choice" value="{{choice.choice_content}}" class="form-control" id="" cols="30" rows="3" placeholder="Update Answer Choice">
+        <br>
+        <select class="custom-select" name="question_option">
+                <option selected>Update Question </option>
+                {% for question in questions_all %}
+                <option  value="{{question.id}}">{{question.question_content}}</option>
+                {% endfor %}
+        </select>
+    </div>
+    <input type="submit" value="Update" class="btn btn-light">
+</form>

@@ -35,7 +35,7 @@ def success(request):
 
 def login_index(request):
     context = {
-        "age_range": ['25-35', '36-45', '46-55', '56-65', '66-75']
+        "age_range": ['18 - 24', '25-35', '36-45', '46-55', '56-65', '66-75']
     }
     return render(request, 'login/index.html', context)
 
@@ -70,16 +70,39 @@ def register(request):
         
         user = User.objects.create(name=request.POST['first_name'], dob=request.POST['dob'], email=request.POST['email'], password=hashedPw, gender=request.POST['iam'], seeking_for=request.POST['seekfor'], age_between=request.POST['age_between'], zip_code=request.POST['zipcode'], summery=request.POST['summery'])
         
+        request.session['temp_user_id'] = user.id
+        request.session['temp_user'] = user.name
+
         return redirect(getQuestionnaireForm)
 
 def getQuestionnaireForm(request):
-    return render(request, 'login/questionnaire.html')
+
+    questionnaire = [{'Which marital status do you prefer?':['No preference', 'Never Married', 'Currently Separated', 'Widow/Widower']},
+                        {'Do you smoke?':['No, Never!', 'Yes-occasionally', 'Yes-daily', 'Yes -trying to quit']},
+                        {'Do you have any kids?':['No', 'Yes', 'Yes, live away from home', 'yes - live at home']},
+                        {'Do you want any Children?':['No', 'Definitely', 'Someday', 'Not Sure']},
+                        {'How often do you drink?':['Never', 'Social drinker', 'Moderately', 'Regularly']},
+                        {'What is your salary?':['$25,000 - $50,000', '$50,001 - $100,000', '$100,001 - $200,000', 'Greater than $200,001  ']},]
+
+    context = {
+        "questionnaire": questionnaire
+    }
+
+    return render(request, 'login/questionnaire.html', context)
+
+def questionnaire_answer(request):
+
+    request.session['user_id'] = request.session['temp_user_id']
+    request.session['user'] = request.session['temp_user']
+    request.session.pop('temp_user_id')
+    request.session.pop('temp_user')
+
+    return redirect(success)
 
 def login(request):
     if 'user' in request.session:
         return redirect(success)
-    print("--------- in --------------")
-    print(request.POST['email'])
+    
     errors = User.objects.login_validator(request.POST)
     
     if len(errors) > 0:
@@ -108,3 +131,5 @@ def get_signup_form(request):
 def get_login_form(request):
     return render(request, 'login/login_form.html')
 
+def admin_login(request):
+    return redirect('/../dating_admin/')

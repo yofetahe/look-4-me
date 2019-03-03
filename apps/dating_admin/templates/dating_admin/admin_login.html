@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Look-4-Me</title>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <!-- Begin - javascript and CSS required for implmenting dataTables -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- end - javascript and CSS required for implmenting dataTables -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--JQuery UI-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/css/main.css' %}">
+    <script src="{% static 'login/js/main.js' %}"></script>
+    
+    <style>
+        *{
+            /* outline: 1px solid red; */
+        }
+        #sm-logo{
+            background-image: url('/static/login/images/logo_bg.png');
+            background-position:center;
+            background-repeat:no-repeat;
+            background-size: contain;
+            height:100px;
+            width:150px;
+            text-align: center;
+            padding-top: 15px;
+            color: white;
+            font-size: 25px;
+            display: inline-block;
+        }
+        .form_container_inside{
+            padding-top: 100px;
+        }
+        .header_link_container{
+            text-align: right;
+            display: inline-block;
+            vertical-align: middle;
+            width: 86%;
+        }
+            .header_link_container a{
+                text-decoration: none;                
+            }
+        
+        h3.page_title{
+            display: inline-block;
+            width: 13%;
+        }
+
+        /* Admin - Questions and Answers */
+        .category_title{
+            font-weight: bold;
+        }
+        .left{
+            vertical-align: top;
+            display: inline-block;
+            width: 48%;
+        }
+        .right{
+            vertical-align: top;
+            display: inline-block;
+            width: 48%;
+        }
+        form{
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class = "header">
+        <div class="container">
+            <div id="sm-logo">
+                Look4Me
+            </div>
+            <div class="header_link_container">
+                <a href="#" style="text-decoration: none; color:black;">ADMIN PAGE</a> 
+                &nbsp; | &nbsp;
+                <a href="{% url 'web_index' %}">Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="container form_container_inside">
+        <div class="reduced_opacity_background">
+            <form id="login_form" action="{% url 'admin_login_validator' %}" method="POST" class="registration_form">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-4 col-form-label">Email</label>                                
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="email" placeholder="" value="{{email}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                    </div>                    
+                    <input type="submit" class="btn btn-light" value="LOG IN">
+                </div>                    
+            </form>
+        </div>
+    </div>
+</body>
+</html>

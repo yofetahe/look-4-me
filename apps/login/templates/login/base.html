@@ -23,16 +23,23 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'login/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'dating/css/main.css' %}">
     <script src="{% static 'login/js/main.js' %}"></script>
     
 </head>
 <body id="login_body">
     <div class = "header">
         <div class="container">
-            <div id="logo">
-                <img class="img-fluid" src="/static/login/images/logo_bg.png" alt="Logo_Bg">
-            </div>
-            <div container>
+                <div id="sm-logo">
+                    Look4Me
+                </div>
+                <div class="header_link_container">
+                    <a href="#">Home</a> &nbsp; | &nbsp;
+                    <a href="#">About us</a> &nbsp; | &nbsp;
+                    <a href="#">Clients Comment</a> &nbsp; | &nbsp;
+                    <a href="#">Contact Us</a>
+                </div>
+            <div class="container">
                 <form action="">
                     <div class="login_form">
                         <label for=""></label>
@@ -45,6 +52,10 @@
         {% block content %}
             
         {% endblock content %}
+    </div>
+    <hr>
+    <div class="container footer_container">
+        <a href="{% url 'admin_login' %}">Admin Login</a>
     </div>
 
 </body>

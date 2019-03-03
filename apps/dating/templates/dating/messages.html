@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<div class="row">
+    <div class="col-md-4">
+        {{message}}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="form-group">
+                    <a href="#" class="message_id" name='{{message.id}}' id="message_{{message.id}}" style="text-decoration: none"> 
+                        <img src="{% static 'login/images/heart.png' %}" alt="" style="width: 20px; height: auto;">
+                        {{message.title}}
+                    </a>
+                    <p style="font-size: 12px; font-style:italic">{{message.user_written_by.name}} at {{message.created_at}}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p><i> You don't have message. </i></p>
+        {% endif %}
+    </div>
+    <div id='message_display' class='col-sm-8'>
+
+    </div>
+</div>
+<script>
+    $(Document).ready(function() {
+
+        $('.message_id').click(function() {
+            
+            var message_id = $(this).attr('name');
+                 
+            $.ajax({
+                url: '{% url "message_picker" %}',
+                type: 'get',
+                data: {
+                    'message_id': message_id
+                },
+                dataType: 'html',
+                success: function(data) {
+                    $('#message_display').html(data)
+                }
+            });
+
+        });
+
+
+    })
+</script>

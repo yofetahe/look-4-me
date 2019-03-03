@@ -2,6 +2,7 @@
     <table id="memberList" style="width:100%">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Date of Birth</th>
@@ -14,28 +15,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Text User</td>
-                <td>text@gmail.com</td>
-                <td>1991-11-19</td>
-                <td>Male</td>
-                <td>Female</td>
-                <td>35-45</td>
-                <td>98026</td>
-                <td>Active</td>
-                <td> <a href="">block</a> &nbsp; | &nbsp; <a href="">Delete</a> </td>
-            </tr>
-            <tr>
-                <td>Text User</td>
-                <td>text@gmail.com</td>
-                <td>1991-11-19</td>
-                <td>Male</td>
-                <td>Female</td>
-                <td>35-45</td>
-                <td>98026</td>
-                <td>Active</td>
-                <td> <a href="">block</a> &nbsp; | &nbsp; <a href="">Delete</a> </td>
-            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.dob | date:'Y-d-m'}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.seeking_for}}</td>
+                    <td>{{user.age_between}}</td>
+                    <td>{{user.zip_code}}</td>
+                    <td>Active</td>
+                    <td> <a href="">block</a> &nbsp; | &nbsp; <a href="">Delete</a> </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

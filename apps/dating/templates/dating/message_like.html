@@ -1,63 +1,49 @@
 {% extends 'dating/base_3.html' %} 
 
+{% block base_3_content %}
 {% load staticfiles%}
 
-{% block base_3_content %}
-<script>
-        function openCity(items, elmnt, color) {
-            // Hide all elements with class="tabcontent" by default */
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-    
-            // Remove the background color of all tablinks/buttons
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-    
-            // Show the specific tab content
-            document.getElementById(items).style.display = "block";
-    
-            // Add the specific color to the button used to open the tab content
-            elmnt.style.backgroundColor = color;
-        }
-    
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-    </script>
-    
-<div class="row">
-    <div class="col-md-8">
-        <div class='row offset-sm-1'>
-            <div class="tablink col-sm-3" onclick="openCity('Message', this, 'rgba(200, 54, 54, 0.5)')" id="defaultOpen">Messages</div>
-            <div class="tablink col-sm-2 col-md-2" onclick="openCity('Like', this, 'rgba(200, 54, 54, 0.5)')">Likes</div>
+    <div class="col-md-12">        
+        <div class="messages-tabs">
+            <a id="message" href="#" class="active" > Messages </a>
+            <a id="like" href="#"> Whom you likes </a>
         </div>
-        <div class=" offset-sm-1 border-top">
-            <div id="Message" class="tabcontent">
-                <div class=' col-sm-11 col-md-2 index d-inline-block'>
-                    <p class="message_picker">who sent and when u received</p>
-                </div>
-
-                <div class='message_display col-sm-11 col-md-9 float-md-right d-inline-block'>
-                    <p class='content'>Ajaxuuuuuuuuuuuuuuu{{x.about_the_member}}</p>
-                </div>
-            </div>
-
-            <div id="Like" class="tabcontent">
-
-                <div class='show_matching col-sm-11 col-md-6 col-lg-3 ' style=" background: url('/static/login/images/bg_image.jpg');background-position: center;background-size: cover; ">
-                    <!-- <img sre="{% static 'login/images/background-image.jpg' %}"> -->
-                    <p class="show_info">{{x.full_name}}({{x.age}})</p>
-                    <div class="little_bar">
-                        <a href=""><img src="{% static 'login/images/cross_icon.png' %}" /></a>
-                        <a href=""><img src="{% static 'login/images/heart.png' %}" /></a>
-                        <a href=""><img src="{% static 'login/images/chat_icon.png' %}" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id='display' style="padding-top: 15px"> 
+            {% include 'dating/messages.html' %}
+        </div>        
     </div>
-{%endblock base_3_content%}
+
+    <script>
+        //////////////AJAX/////////////
+
+        $(document).ready(function() {
+
+            $('#message').click(function() {
+                $.ajax({
+                    url: '{% url "display_messages" %}',
+                    type: 'get',
+                    dataType: 'html',
+                    success: function(data) {
+                        document.getElementById('message').className = 'active'
+                        document.getElementById('like').className = ''
+                        $('#display').html(data)
+                    }
+                });
+            });
+
+            $('#like').click(function() {
+                
+                $.ajax({
+                    url: '{% url "like_pic_dispaly" %}',
+                    type: 'get',
+                    dataType: 'html',
+                    success: function(data) {
+                        document.getElementById('message').className = ''
+                        document.getElementById('like').className = 'active'
+                        $('#display').html(data)
+                    }
+                });
+            });
+        })
+    </script>
+{% endblock base_3_content %}

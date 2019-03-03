@@ -1,0 +1,29 @@
+
+<div class="row" style="padding-top: 15px;">
+    <div class="col-md-11"> <p><b>Title:</b> {{mes_id.title}}</p> </div>
+    <div class="col-md-1"> 
+        <a href="/dating/delete_message/{{mes_id.id}}"><i class="material-icons">
+            delete
+        </i></a> 
+    </div>
+    <div class="col-md-12">
+        <p>{{mes_id.content}}</p>
+        <form id='reply_form' action="/dating/mes_reply/{{mes_id.user_written_by.id}}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea name='reply_content' class='col-sm-12 d-block ' class="form-control"></textarea>
+            </div>
+            <!-- <input type="hidden" name='reply_to' value="{{mes_id.user_written_by.id}}"> -->
+            <input type="hidden" name='title' value="re:{{mes_id.title}}">
+            <input type="hidden" name='mes_id' value="{{mes_id.id}}">
+            <input type="submit" value="Reply" class='btn btn-light'>
+        </form>
+    </div>
+</div>
+
+<!-- <script>
+    $(document).ready(function() {
+        $('#reply_form').submit(function() {
+        });
+    })
+</script> -->
