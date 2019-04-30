@@ -11,7 +11,7 @@ class Picture(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Question_answer(models.Model):
-    user = models.ForeignKey(User, related_name="questions_answers")
+    user = models.ForeignKey(User, related_name="questions_answers", on_delete=models.PROTECT)
     question = models.ForeignKey(Questionnaire, related_name="user_quetions", on_delete=models.PROTECT)    
     selected_choice = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
