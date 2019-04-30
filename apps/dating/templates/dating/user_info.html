@@ -37,21 +37,38 @@
                 <p>Looking for: {{selected_user.seeking_for}}</p>
                 <p>Self Summery</p>
                 <p class='content'>
-                    Was there a girl who was always good at everything she did back at your highschool? Becasue that's me! I have a unique fun and outgoing personality. I am 5'8, have blue eyes and the physique of a cheerleader. I drive a porche. Only text me if
-        you have a better car. I am the CEO of a media company in LA.I am either working or travelling the world. Recently visited Australia, France, Italy, Antartica and Mexico. Join me on my next trip to India. I am really nice I swear :)  {{selected_user.summary}}</p>
+                    <!-- Was there a girl who was always good at everything she did 
+                    back at your highschool? Becasue that's me! I have a unique 
+                    fun and outgoing personality. I am 5'8, have blue eyes and 
+                    the physique of a cheerleader. I drive a porche. Only text me if
+                    you have a better car. I am the CEO of a media company in LA.
+                    I am either working or travelling the world. Recently visited 
+                    Australia, France, Italy, Antartica and Mexico. Join me on my 
+                    next trip to India. I am really nice I swear :)   -->
+                    
+                    {{selected_user.summary}}
+                </p>
             </div>
         </div>
 <!-- col-sm-12 mb-sm-2 d-inline-block -->
 <div class='self_info col-md-12'>
     <div class=' col-sm-11 col-lg-6 d-inline-block' id="one">
         <p class='title'>About the member</p>
-        <p class='content'>I wake up at 4:30am everyday to go for a run with my two dogs. My favorite drink is tequila. Favorite type of movies is Horror. I hope to own a private island soon just incase of a zombie apocalypse. I am very beautiful. Another import thing is
-I am hetrosexual.</p>
+        <p class='content'>
+            I wake up at 4:30am everyday to go for a run with my two dogs. 
+            My favorite drink is tequila. Favorite type of movies is Horror. 
+            I hope to own a private island soon just incase of a zombie apocalypse. 
+            I am very beautiful. Another import thing is I am hetrosexual.
+        </p>
     </div>
 
     <div class=' col-sm-11 col-lg-5 d-inline-block' id="one">
         <p class='title'>What the member looking for</p>
-        <p class='content'>I'm looking for my future husband who is a gentleman. Must be atleast 6'0 and love to travel like me. Preferred occupation would be an Entrepreneur.</p>
+        <p class='content'>
+            I'm looking for my future husband who is a gentleman. Must be atleast 
+            6'0 and love to travel like me. Preferred occupation would be an 
+            Entrepreneur.
+        </p>
     </div>
 </div>
 
@@ -62,21 +79,22 @@ I am hetrosexual.</p>
         <p class='title'>Pictures</p>
 
         
-            <div style="margin-right: 5px; margin-bottom: 5px;">
-                {% if selected_user.pictures.all %}
-                    {% for pic in selected_user.pictures.all %}                                                   
+        <div style="margin-right: 5px; margin-bottom: 5px;">
+            {% if selected_user.pictures.all %}
+                {% for pic in selected_user.pictures.all %}                                                   
                         
-                            {% for key, value in photo_url.items %}
-                                {% if key == pic.id %}
-                                    <img class="member_photo" src="{% static value %}" alt="profile_pic">
-                                {% endif %}
-                            {% endfor %} 
+                    {% for key, value in photo_url.items %}
+                        {% if key == pic.id %}
+                            <img class="member_photo" src="{% static value %}" alt="profile_pic">
+                            <br><br>
+                        {% endif %}
+                    {% endfor %} 
                         
-                    {% endfor %}
-                {% else %}                
-                    <p>No Picture</p>
-                {% endif %}
-            </div>
+                {% endfor %}
+            {% else %}                
+                <p>No Picture</p>
+            {% endif %}
+        </div>
         
     </div>
     <div class='col-sm-11 col-lg-5 d-inline-block align-top'>

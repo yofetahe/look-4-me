@@ -2,7 +2,13 @@
 * {
     /* outline: 1px solid red; */
 }
-
+body#dating_body { 
+    background: url("/static/dating/images/bg_image.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 #sm-logo {
     background-image: url('/static/login/images/logo_bg.png');
     background-position: center;
@@ -37,9 +43,21 @@ h3.page_title {
     width: 13%;
 }
 
+.image-container{
+    width: 156px; 
+    height: 150px; 
+    align-items: center; 
+    background-color: silver; 
+    overflow: hidden;
+}
 img.member_photo {
     width: auto;
-    height: 145px;
+    height: 100%;      
+}
+img.profile_photo{
+    border-radius: 50%;
+    height: auto;
+    width: 80%;
 }
 
 
@@ -93,7 +111,7 @@ div.profile_content {
 
 /* ====== my matches ====== */
 
-.navbar {
+/* .navbar {
     font-family: cursive;
     font-size: 15px;
     vertical-align: top;
@@ -101,14 +119,14 @@ div.profile_content {
     z-index: 100;
     position: relative;
     left: 20%;
-}
+} */
 
-.navbar-nav {
-    /* float: right; */
+/*.navbar-nav {
+     float: right; 
     background-color: rgba(255, 76, 93, .1);
-}
+}*/
 
-.navbar-toggler {}
+
 
 .info_display {
     position: absolute;

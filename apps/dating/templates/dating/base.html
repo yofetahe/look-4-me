@@ -41,15 +41,13 @@
 
 </head>
 
-<body>
-    <div class="header">
+<body id="dating_body">
+    {% include 'dating/header.html' %}
+    <!-- <div class="header">
         <div class="container">
             <div id="sm-logo">
                 Look4Me
             </div>
-
-            <!-- 
-            <div class="header_link_container"> -->
 
             <nav class="d-inline-block navbar navbar-expand-xl navbar-light ml-auto">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,11 +79,14 @@
                 </div>
             </nav>
         </div>
-    </div>
+    </div> -->
     <div class="form_container_inside container">
             
         {% block base_content %} {% endblock base_content %}
 
+    </div>
+    <div>
+        {% include 'dating/footer.html' %}
     </div>
 </body>
 

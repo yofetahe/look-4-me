@@ -10,23 +10,33 @@
                         {% if pic.is_profile_pic == 'TRUE' %}
                             {% for key, value in photo_url.items %}
                                 {% if key == pic.id %}
+                                <div class="image-container">
                                     <img class="member_photo" src="{% static value %}" alt="profile_pic">
+                                </div>
                                 {% endif %}
                             {% endfor %} 
                         {% endif %}
                     {% endfor %}
-                {% else %}                
-                    <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+                {% else %}                    
+                    <div class="image-container">              
+                        <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+                    </div>  
                 {% endif %}                              
                 
-                <div class="little_bar" style="text-align: center; width: 100%;">                    
-                    <a href="{% url 'block_person' member.id %}"><img src="{% static 'login/images/cross_icon.png' %}" /></a>
+                <div class="little_bar" style="text-align: center; width: 100%; padding-top: 10px;">                    
+                    <a href="{% url 'block_person' member.id %}">
+                        <i class="material-icons">visibility_off</i>
+                    </a>
                     {% if member in liked_user_array %}
-                        <img src="{% static 'dating/images/liked_heart.png' %}" />
+                        <i class="material-icons" style="color: red;">favorite</i>
                     {% else %}
-                        <a href="{% url 'like_person' member.id %}"><img src="{% static 'login/images/heart.png' %}" /></a>
+                        <a href="{% url 'like_person' member.id %}">
+                            <i class="material-icons">favorite_border</i>
+                        </a>
                     {% endif %}
-                    <a href="{% url 'search' member.id %}"><img src="{% static 'login/images/chat_icon.png' %}" /></a>
+                    <a href="{% url 'search' member.id %}">
+                        <i class="material-icons">chat</i>
+                    </a>
                 </div>
                 <div style="text-align: center">
                     <span>{{member.name}}(Age: {{member.age}})</span><br>

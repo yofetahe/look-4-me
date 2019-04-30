@@ -113,7 +113,7 @@ def login(request):
         user = User.objects.filter(email=request.POST['email'])
         for u in user:
             userdbpassword = u.password
-       
+        print(user)
         if user and bcrypt.checkpw(request.POST['password'].encode(), userdbpassword.encode()):
             request.session['user'] = user[0].name
             request.session['user_id'] = user[0].id

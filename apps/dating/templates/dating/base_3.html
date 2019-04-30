@@ -15,13 +15,13 @@
                         {% if pic.is_profile_pic == 'TRUE' %}
                             {% for key, value in photo_url.items %} 
                                 {% if key == pic.id %}                                                                 
-                                    <img class="pic_search member_photo" src="{% static value %}" alt="profile_pic">
+                                    <img class="profile_photo" src="{% static value %}" alt="profile_pic">
                                 {% endif %}
                             {% endfor %} 
                         {% endif %}
                     {% endfor %}
                 {% else %}
-                    <img class="pic_search member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+                    <img class="profile_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
                 {% endif %}  
                 <p>Welcome, <b>{{user.name}}</b></p>
                 <p>Age - {{user.age}}</p>

@@ -1,0 +1,30 @@
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgba(255, 145, 0, 0.5)">
+        <a class="navbar-brand" href="#">                
+            Look4Me                   
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>        
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'my_matches' %}">My Matches <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'search_matches' %}">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'messages_likes' %}">Messages & Likes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'get_profile_index' %}">My Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+            </li>
+          </ul>
+        </div>
+</nav>

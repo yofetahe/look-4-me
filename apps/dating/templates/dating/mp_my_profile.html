@@ -4,11 +4,11 @@
         {% if user.pictures.all %}
             {% for pic in user.pictures.all %}
                 {% if pic.is_profile_pic == 'TRUE' %}
-                    <img class="pic_search member_photo" src="..{{pic.pictures.url}}" alt="profile_pic">
+                    <img class="profile_photo" src="..{{pic.pictures.url}}" alt="profile_pic">
                 {% endif %}
             {% endfor %}
         {% else %}                
-            <img class="member_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+            <img class="profile_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
         {% endif %} 
     </div>
     <div class="col-md-9 mb-4">

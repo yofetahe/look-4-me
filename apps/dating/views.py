@@ -209,6 +209,15 @@ def user_info_display(request, user_id):
     user = User.objects.get(id=request.session['user_id'])
     selected_user=User.objects.get(id=user_id)
     liked_user = UserLike.objects.filter(like_by=user).filter(liked=selected_user)
+
+    # ----- current user age ----- #
+    date_format = "%Y-%m-%d"
+    today = datetime.strptime(str(datetime.now().date()), date_format)    
+    selected_user_dob = datetime.strptime(str(selected_user.dob.date()), date_format)
+    delta = today - selected_user_dob
+    selected_user.age = round(delta.days/365)
+    print(selected_user.age)
+    # ----- current user age ----- #
     
     photo_url = {}
     for pic in selected_user.pictures.all():
