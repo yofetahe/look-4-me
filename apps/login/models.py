@@ -67,13 +67,13 @@ class User(models.Model):
     objects = UserManager()
 
 class UserLike(models.Model):
-    like_by = models.ForeignKey(User, related_name='like_by', default=1)
-    liked = models.ForeignKey(User, related_name='liked', default=1)
+    like_by = models.ForeignKey(User, related_name='like_by', default=1, on_delete=models.PROTECT)
+    liked = models.ForeignKey(User, related_name='liked', default=1, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class UserBlock(models.Model):
-    block_by = models.ForeignKey(User, related_name='block_by', default=1)
-    blocked = models.ForeignKey(User, related_name='blocked', default=1)
+    block_by = models.ForeignKey(User, related_name='block_by', default=1, on_delete=models.PROTECT)
+    blocked = models.ForeignKey(User, related_name='blocked', default=1, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
